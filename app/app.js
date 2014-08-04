@@ -1,9 +1,14 @@
-// Logging
+/**
+  Main app module
+  @module app
+  @main app
+ */
+
 var log = config.getLogger('app');
 var express = require('express');
 var path = require('path');
 var favicon = require('static-favicon');
-var morgan = require('morgan'); // http logging
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
@@ -15,18 +20,23 @@ var app = express();
 log.info('app init');
 log.debug('env is \'' + config.env.current + '\'');
 
+// http logging
+morgan.format('custom', require('./config/morgan').format);
+var httpLogger = morgan('custom');
+app.use(httpLogger);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// etc
 app.use(favicon());
-app.use(morgan('dev'));
-//app.use(config.log4js.connectLogger(log, { level: 'auto' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, '../public')));
 
+// routes
 app.use('/', routes);
 app.use('/users', users);
 
