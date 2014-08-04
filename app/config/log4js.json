@@ -1,0 +1,19 @@
+{
+  "appenders": [
+    {
+      "type": "console",
+      "layout": {
+        "type": "pattern",
+        "pattern": "%[[%d{ABSOLUTE}][%.1p][%c] %m%]"
+      }
+    },
+    {
+    	"type": "file",
+    	"absolute": false,
+    	"filename": "logfile.log",
+    	"maxLogSize": 20480,
+    	"backups": 10,
+    	"category": "file-logging"
+    }
+  ]
+}

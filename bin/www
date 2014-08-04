@@ -1,10 +1,15 @@
 #!/usr/bin/env node
-//var config = require('./config');
-var debug = require('debug')('cmgeocoding');
+require('coffee-script/register');
+GLOBAL.config = require('../app/config/config.coffee');
+var log = config.getLogger('www');
 var app = require('../app/app');
 
-app.set('port', process.env.PORT || 9600); //config.server['port']);
+//console.log(GLOBAL.config);
+//var debug = require('debug')('geocoding-service');
+//debug("hello");
+
+app.set('port', config.server['port']);
 
 var server = app.listen(app.get('port'), function() {
-  debug('Express server listening port ' + server.address().port);
+  log.info('listening port ' + server.address().port);
 });

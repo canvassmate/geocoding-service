@@ -1,24 +1,32 @@
 {
-  "name": "canvassmate_geocoding_service",
-  "license": "Copyright (C) 2014 Canvassmate",
+  "name": "canvassmate-geocoding-service",
+  "license": "MIT",
   "version": "0.0.1",
   "author": "Matias Pequeno <matias.pequeno@gmail.com>",
-  "description": "Geocoding Service for Canvassmate",
+  "description": "Geocoding Web Service for Canvassmate",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/marijnh/tern_for_sublime.git"
+    "url": "git://github.com/canvassmate/geocoding-service.git"
   },
   "dependencies": {
-    "express": ">=4.7.2",
-    "static-favicon": "~1.0.0",
-    "morgan": "~1.0.0",
-    "cookie-parser": "~1.0.1",
-    "body-parser": "~1.0.0",
-    "debug": "~0.7.4",
-    "jade": "~1.3.0"
+    "body-parser": "1.0.x",
+    "bytes": "1.0.x",
+    "coffee-script": "1.7.x",
+    "cookie-parser": "1.0.x",
+    "debug": "1.0.x",
+    "express": "4.7.x",
+    "jade": "1.3.x",
+    "log4js": "0.6.x",
+    "moment": "2.8.x",
+    "morgan": "1.0.x",
+    "static-favicon": "1.0.x"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.4.x"
   }
 }
