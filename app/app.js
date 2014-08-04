@@ -7,7 +7,7 @@
 var log = config.getLogger('app');
 var express = require('express');
 var path = require('path');
-var favicon = require('static-favicon');
+var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var morganext = require('./config/morgan-ext');
 var cookieParser = require('cookie-parser');
@@ -15,6 +15,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+var publicPath = path.join(__dirname, '../public');
 
 var app = express();
 
@@ -31,11 +33,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // etc
-app.use(favicon());
+app.use(favicon(path.join(publicPath, 'images/favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(publicPath));
 
 // routes
 app.use('/', routes);
