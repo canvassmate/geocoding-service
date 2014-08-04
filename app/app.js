@@ -1,10 +1,9 @@
 // Logging
-//var log = config.getLogger('app');
-var morgan = require('morgan'); // http logging
-
+var log = config.getLogger('app');
 var express = require('express');
 var path = require('path');
 var favicon = require('static-favicon');
+var morgan = require('morgan'); // http logging
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
@@ -13,8 +12,8 @@ var users = require('./routes/users');
 
 var app = express();
 
-//log.info('app init');
-//log.debug('env is \'' + config.env.current + '\'');
+log.info('app init');
+log.debug('env is \'' + config.env.current + '\'');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
