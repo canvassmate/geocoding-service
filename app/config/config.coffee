@@ -16,7 +16,7 @@ exports.env =
 exports.env[currentEnv] = true
 
 # log config
-if currentEnv isnt 'production' then process.env['DEBUG'] = '*' # node-debug
+#if currentEnv isnt 'production' then process.env['DEBUG'] = '*' # node-debug
 exports.log4js = require('log4js')
 exports.log4js.configure('./app/config/log4js.json', { reloadSecs: 60, cwd: "./var/log" })
 exports.getLogger = exports.log4js.getLogger # helper
