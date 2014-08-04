@@ -9,6 +9,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('static-favicon');
 var morgan = require('morgan');
+var morganext = require('./config/morgan-ext');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
@@ -18,10 +19,10 @@ var users = require('./routes/users');
 var app = express();
 
 log.info('app init');
-log.debug('env is \'' + config.env.current + '\'');
+log.debug('env is \x1b[34m' + config.env.current + '\x1b[39m');
 
 // http logging
-morgan.format('custom', require('./config/morgan').format);
+morgan.format('custom', morganext.format);
 var httpLogger = morgan('custom');
 app.use(httpLogger);
 
