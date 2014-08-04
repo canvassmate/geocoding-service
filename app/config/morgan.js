@@ -2,6 +2,8 @@
   Configuration and utility
   @module config
  */
+var moment = require('moment');
+var bytes = require('bytes');
 
 module.exports.format = format;
 
@@ -31,20 +33,19 @@ function compile(fmt) {
  */
 function format(tokens, req, res) {
   var status = res.statusCode;
+  var color = status >= 500 ? 31 :
+              status >= 400 ? 33 :
+              status >= 300 ? 36 : 32;
+
   var len = parseInt(res.getHeader('Content-Length'), 10);
-  var color = 32;
+  len = isNaN(len) ? '' : ' - ' + bytes(len);
 
-  if (status >= 500) color = 31
-  else if (status >= 400) color = 33
-  else if (status >= 300) color = 36;
-
-  len = isNaN(len) ? '' : len = ' - ' + bytes(len);
-
-  return '\x1b[90m' + req.method
-    + ' ' + (req.originalUrl || req.url) + ' '
-    + '\x1b[' + color + 'm' + res.statusCode
-    + ' \x1b[90m'
-    + (new Date - req._startTime)
-    + 'ms' + len
-    + '\x1b[0m';
+  return '\x1b[90m' + '[' + moment().format('HH:mm:ss.SSS') + '] ' +
+    '\x1b[1m\x1b[90m' + req.method + '\x1b[22m' +
+    ' ' + (req.originalUrl || req.url) + ' ' +
+    '\x1b[' + color + 'm' + status +
+    ' \x1b[90m' +
+    (new Date - req._startTime) +
+    'ms' + len +
+    '\x1b[0m';
 }
