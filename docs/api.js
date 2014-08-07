@@ -3,7 +3,8 @@ YUI.add("yuidoc-meta", function(Y) {
     "classes": [],
     "modules": [
         "app",
-        "config"
+        "config",
+        "routes"
     ],
     "allModules": [
         {
@@ -14,7 +15,12 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "config",
             "name": "config",
-            "description": "Configuration and utility"
+            "description": "morgan-ext.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nConfiguration and utility"
+        },
+        {
+            "displayName": "routes",
+            "name": "routes",
+            "description": "index.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nIndex route"
         }
     ]
 } };

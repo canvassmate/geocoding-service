@@ -49,6 +49,8 @@
             
                 <li><a href="../modules/config.html">config</a></li>
             
+                <li><a href="../modules/routes.html">routes</a></li>
+            
             </ul>
         </div>
     </div>
@@ -89,23 +91,30 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
+  morgan-ext.js
+  canvassmate-geocodingservice
+
+  created by matux (matias.pequeno@gmail.com) on 2014-08-04
+  copyright (c) 2014 Silicon Illusions. all rights reserved.
+
   Configuration and utility
   @module config
  */
-var moment = require(&#x27;moment&#x27;);
-var bytes = require(&#x27;bytes&#x27;);
+const moment = require(&#x27;moment&#x27;);
+const bytes = require(&#x27;bytes&#x27;);
 
 module.exports.format = format;
 
 /**
-  Compile fmt into a function.
+  Compile &#x60;fmt&#x60; into a function.
+
   @param {String} fmt Format to compile
   @return {Function}
   @private
  */
 function compile(fmt) {
   fmt = fmt.replace(/&quot;/g, &#x27;\\&quot;&#x27;);
-  var js = &#x27;  return &quot;&#x27; + fmt.replace(/:([-\w]{2,})(?:\[([^\]]+)\])?/g, function(_, name, arg){
+  var js = &#x27;  return &quot;&#x27; + fmt.replace(/:([-\w]{2,})(?:\[([^\]]+)\])?/g, function(_, name, arg) {
     return &#x27;&quot;\n    + (tokens[&quot;&#x27; + name + &#x27;&quot;](req, res, &quot;&#x27; + arg + &#x27;&quot;) || &quot;-&quot;) + &quot;&#x27;;
   }) + &#x27;&quot;;&#x27;
   return new Function(&#x27;tokens, req, res&#x27;, js);

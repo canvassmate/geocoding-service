@@ -10,6 +10,22 @@
             "fors": {},
             "namespaces": {}
         },
+        "app/routes/index.js": {
+            "name": "app/routes/index.js",
+            "modules": {
+                "routes": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/routes/users.js": {
+            "name": "app/routes/users.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
         "app/app.js": {
             "name": "app/app.js",
             "modules": {
@@ -30,11 +46,13 @@
             "tag": "module",
             "file": "app/config/morgan-ext.js",
             "line": 1,
-            "description": "Configuration and utility"
+            "description": "morgan-ext.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nConfiguration and utility"
         },
         "app": {
             "name": "app",
-            "submodules": {},
+            "submodules": {
+                "routes": 1
+            },
             "classes": {},
             "fors": {},
             "namespaces": {},
@@ -43,14 +61,27 @@
             "line": 1,
             "description": "app.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nMain app module",
             "itemtype": "main"
+        },
+        "routes": {
+            "name": "routes",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "app",
+            "namespace": "",
+            "file": "app/routes/index.js",
+            "line": 1,
+            "description": "index.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nIndex route"
         }
     },
     "classes": {},
     "classitems": [
         {
             "file": "app/config/morgan-ext.js",
-            "line": 10,
-            "description": "Compile fmt into a function.",
+            "line": 16,
+            "description": "Compile `fmt` into a function.",
             "params": [
                 {
                     "name": "fmt",
@@ -69,7 +100,7 @@
         },
         {
             "file": "app/config/morgan-ext.js",
-            "line": 24,
+            "line": 31,
             "description": "Custom format function inspired on morgan's `dev`",
             "params": [
                 {
@@ -100,12 +131,12 @@
     ],
     "warnings": [
         {
-            "message": "Missing item type\nCompile fmt into a function.",
-            "line": " app/config/morgan-ext.js:10"
+            "message": "Missing item type\nCompile `fmt` into a function.",
+            "line": " app/config/morgan-ext.js:16"
         },
         {
             "message": "Missing item type\nCustom format function inspired on morgan's `dev`",
-            "line": " app/config/morgan-ext.js:24"
+            "line": " app/config/morgan-ext.js:31"
         }
     ]
 }

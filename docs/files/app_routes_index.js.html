@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app/app.js</title>
+    <title>app/routes/index.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -86,87 +86,43 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: app/app.js</h1>
+                        <h1 class="file-heading">File: app/routes/index.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
-  app.js
+  index.js
   canvassmate-geocodingservice
 
   created by matux (matias.pequeno@gmail.com) on 2014-08-04
   copyright (c) 2014 Silicon Illusions. all rights reserved.
 
-  Main app module
+  Index route
   @module app
-  @main app
+  @submodule routes
  */
 
-var log = config.getLogger(&#x27;app&#x27;);
 var express = require(&#x27;express&#x27;);
-var path = require(&#x27;path&#x27;);
-var favicon = require(&#x27;serve-favicon&#x27;);
-var morgan = require(&#x27;morgan&#x27;);
-var morganext = require(&#x27;./config/morgan-ext&#x27;);
-var cookieParser = require(&#x27;cookie-parser&#x27;);
-var bodyParser = require(&#x27;body-parser&#x27;);
+var router = express.Router();
+var log = config.getLogger(&#x27;router&#x27;);
 
-var routes = require(&#x27;./routes/index&#x27;);
-var users = require(&#x27;./routes/users&#x27;);
-
-var publicPath = path.join(__dirname, &#x27;../public&#x27;);
-
-var app = express();
-
-log.info(&#x27;app init&#x27;);
-log.debug(&#x27;env is \x1b[34m&#x27; + config.env.current + &#x27;\x1b[39m&#x27;);
-
-// http logging
-morgan.format(&#x27;custom&#x27;, morganext.format);
-var httpLogger = morgan(&#x27;custom&#x27;);
-app.use(httpLogger);
-
-// view engine setup
-app.set(&#x27;views&#x27;, path.join(__dirname, &#x27;views&#x27;));
-app.set(&#x27;view engine&#x27;, &#x27;jade&#x27;);
-
-// etc
-app.use(favicon(path.join(publicPath, &#x27;images/favicon.ico&#x27;)));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.use(cookieParser());
-app.use(express.static(publicPath));
-
-// routes
-app.use(&#x27;/&#x27;, routes);
-app.use(&#x27;/users&#x27;, users);
-
-// Catch 404 and forward to error handler
-app.use(function(req, res, next) {
-	var err = new Error(&#x27;Not Found&#x27;);
-	err.status = 404;
-	next(err);
+// GET home page.
+router.get(&#x27;/&#x27;, function(req, res) {
+	res.render(&#x27;index&#x27;, { title: &#x27;Canvassmate Geocoding Web Service&#x27; });
 });
 
-// Error Handlers
-
-// Development error handler
-// will print stacktrace
-if (app.get(&#x27;env&#x27;) === &#x27;development&#x27;) {
-	app.use(function(err, req, res, next) {
-		res.status(err.status || 500);
-		res.render(&#x27;error&#x27;, { message: err.message, error: err });
-	});
-}
-
-// Production error handler
-// no stacktrace leaked to users
-app.use(function(err, req, res, next) {
-	res.status(err.status || 500);
-	res.render(&#x27;error&#x27;, { message: err.message, error: {} });
+// Simple check
+router.get(&#x27;/api&#x27;, function(req, res) {
+	res.send(&#x27;API is running&#x27;);
 });
 
-module.exports = app;
+// Error example
+router.get(&#x27;/error&#x27;, function(req, res, next) {
+	log.error(&quot;Z0MG!1 Error!&quot;);
+	next(new Error(&#x27;WTF Error!&#x27;));
+});
+
+module.exports = router;
 
     </pre>
 </div>
