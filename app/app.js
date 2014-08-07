@@ -1,4 +1,10 @@
 /**
+  app.js
+  canvassmate-geocodingservice
+
+  created by matux (matias.pequeno@gmail.com) on 2014-08-04
+  copyright (c) 2014 Silicon Illusions. all rights reserved.
+
   Main app module
   @module app
   @main app
