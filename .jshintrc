@@ -7,6 +7,7 @@
   "forin": true, // requires all for in loops to filter object's items
   "noarg": true, // prohibits the use of deprecated arguments.caller and arguments.callee
   "esnext": true, // ECMAScript 6 (Harmony)
+  "strict": true,
   // lang lax
   "boss": true,
   "eqnull": true,

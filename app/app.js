@@ -9,18 +9,19 @@
   @module app
   @main app
  */
+'use strict';
 
-const log = config.getLogger('app');
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const morgan = require('morgan');
-const morganext = require('./config/morgan-ext');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+const log = config.getLogger('app'),
+      express = require('express'),
+      path = require('path'),
+      favicon = require('serve-favicon'),
+      morgan = require('morgan'),
+      morganext = require('./config/morgan-ext'),
+      cookieParser = require('cookie-parser'),
+      bodyParser = require('body-parser');
 
-const routes = require('./routes/index');
-const users = require('./routes/users');
+const routes = require('./routes/index'),
+      users = require('./routes/users');
 
 const publicPath = path.join(__dirname, '../public');
 
@@ -52,8 +53,8 @@ app.use('/users', users);
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
 	const err = new Error('Not Found');
-	err.status = 404;
-	next(err);
+  err.status = 404;
+  next(err);
 });
 
 // Error Handlers

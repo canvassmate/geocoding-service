@@ -8,8 +8,10 @@
   Configuration and utility
   @module config
  */
-const moment = require('moment');
-const bytes = require('bytes');
+'use strict';
+
+const moment = require('moment'),
+      bytes = require('bytes');
 
 /**
   Custom format function inspired on morgan's `dev`
