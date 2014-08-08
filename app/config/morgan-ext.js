@@ -1,4 +1,10 @@
 /**
+  morgan-ext.js
+  canvassmate-geocodingservice
+
+  created by matux (matias.pequeno@gmail.com) on 2014-08-04
+  copyright (c) 2014 Silicon Illusions. all rights reserved.
+
   Configuration and utility
   @module config
  */
@@ -8,11 +14,11 @@ var bytes = require('bytes');
 module.exports.format = format;
 
 /**
- Compile `fmt` into a function.
+  Compile `fmt` into a function.
 
- @param {String} fmt
- @return {Function}
- @api private
+  @param {String} fmt Format to compile
+  @return {Function}
+  @private
  */
 function compile(fmt) {
   fmt = fmt.replace(/"/g, '\\"');
@@ -23,13 +29,13 @@ function compile(fmt) {
 }
 
 /**
- Custom format function inspired on morgan's `dev`
+  Custom format function inspired on morgan's `dev`
 
- @param {String} tokens
- @param {Object} req
- @param {Object} res
- @return {String} log string
- @api public
+  @param {String} tokens
+  @param {Object} req
+  @param {Object} res
+  @return {String} log string
+  @public
  */
 function format(tokens, req, res) {
   var status = res.statusCode;

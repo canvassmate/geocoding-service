@@ -1,0 +1,142 @@
+{
+    "project": {},
+    "files": {
+        "app/config/morgan-ext.js": {
+            "name": "app/config/morgan-ext.js",
+            "modules": {
+                "config": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/routes/index.js": {
+            "name": "app/routes/index.js",
+            "modules": {
+                "routes": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/routes/users.js": {
+            "name": "app/routes/users.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/app.js": {
+            "name": "app/app.js",
+            "modules": {
+                "app": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "config": {
+            "name": "config",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "app/config/morgan-ext.js",
+            "line": 1,
+            "description": "morgan-ext.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nConfiguration and utility"
+        },
+        "app": {
+            "name": "app",
+            "submodules": {
+                "routes": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "app/app.js",
+            "line": 1,
+            "description": "app.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nMain app module",
+            "itemtype": "main"
+        },
+        "routes": {
+            "name": "routes",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "app",
+            "namespace": "",
+            "file": "app/routes/index.js",
+            "line": 1,
+            "description": "index.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nIndex route"
+        }
+    },
+    "classes": {},
+    "classitems": [
+        {
+            "file": "app/config/morgan-ext.js",
+            "line": 16,
+            "description": "Compile `fmt` into a function.",
+            "params": [
+                {
+                    "name": "fmt",
+                    "description": "Format to compile",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Function"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "",
+            "module": "config"
+        },
+        {
+            "file": "app/config/morgan-ext.js",
+            "line": 31,
+            "description": "Custom format function inspired on morgan's `dev`",
+            "params": [
+                {
+                    "name": "tokens",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "req",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "res",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "log string",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "class": "",
+            "module": "config"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nCompile `fmt` into a function.",
+            "line": " app/config/morgan-ext.js:16"
+        },
+        {
+            "message": "Missing item type\nCustom format function inspired on morgan's `dev`",
+            "line": " app/config/morgan-ext.js:31"
+        }
+    ]
+}
