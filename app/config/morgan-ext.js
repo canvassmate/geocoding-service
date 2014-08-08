@@ -8,8 +8,8 @@
   Configuration and utility
   @module config
  */
-var moment = require('moment');
-var bytes = require('bytes');
+const moment = require('moment');
+const bytes = require('bytes');
 
 module.exports.format = format;
 
@@ -22,7 +22,7 @@ module.exports.format = format;
  */
 function compile(fmt) {
   fmt = fmt.replace(/"/g, '\\"');
-  var js = '  return "' + fmt.replace(/:([-\w]{2,})(?:\[([^\]]+)\])?/g, function(_, name, arg){
+  var js = '  return "' + fmt.replace(/:([-\w]{2,})(?:\[([^\]]+)\])?/g, function(_, name, arg) {
     return '"\n    + (tokens["' + name + '"](req, res, "' + arg + '") || "-") + "';
   }) + '";'
   return new Function('tokens, req, res', js);
