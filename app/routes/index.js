@@ -10,9 +10,9 @@
   @submodule routes
  */
 
-var express = require('express');
-var router = express.Router();
-var log = config.getLogger('router');
+const express = require('express');
+const router = express.Router();
+const log = config.getLogger('router');
 
 // GET home page.
 router.get('/', function(req, res) {
@@ -26,7 +26,7 @@ router.get('/api', function(req, res) {
 
 // Error example
 router.get('/error', function(req, res, next) {
-	log.error("Z0MG!1 Error!");
+	log.error('Z0MG!1 Error!');
 	next(new Error('WTF Error!'));
 });
 

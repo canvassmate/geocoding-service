@@ -10,28 +10,28 @@
   @main app
  */
 
-var log = config.getLogger('app');
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var morgan = require('morgan');
-var morganext = require('./config/morgan-ext');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const log = config.getLogger('app');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const morgan = require('morgan');
+const morganext = require('./config/morgan-ext');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+const routes = require('./routes/index');
+const users = require('./routes/users');
 
-var publicPath = path.join(__dirname, '../public');
+const publicPath = path.join(__dirname, '../public');
 
-var app = express();
+const app = express();
 
 log.info('app init');
 log.debug('env is \x1b[34m' + config.env.current + '\x1b[39m');
 
 // http logging
 morgan.format('custom', morganext.format);
-var httpLogger = morgan('custom');
+const httpLogger = morgan('custom');
 app.use(httpLogger);
 
 // view engine setup
@@ -51,7 +51,7 @@ app.use('/users', users);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
-	var err = new Error('Not Found');
+	const err = new Error('Not Found');
 	err.status = 404;
 	next(err);
 });

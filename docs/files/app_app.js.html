@@ -102,21 +102,21 @@
   @main app
  */
 
-var log = config.getLogger(&#x27;app&#x27;);
-var express = require(&#x27;express&#x27;);
-var path = require(&#x27;path&#x27;);
-var favicon = require(&#x27;serve-favicon&#x27;);
-var morgan = require(&#x27;morgan&#x27;);
-var morganext = require(&#x27;./config/morgan-ext&#x27;);
-var cookieParser = require(&#x27;cookie-parser&#x27;);
-var bodyParser = require(&#x27;body-parser&#x27;);
+const log = config.getLogger(&#x27;app&#x27;);
+const express = require(&#x27;express&#x27;);
+const path = require(&#x27;path&#x27;);
+const favicon = require(&#x27;serve-favicon&#x27;);
+const morgan = require(&#x27;morgan&#x27;);
+const morganext = require(&#x27;./config/morgan-ext&#x27;);
+const cookieParser = require(&#x27;cookie-parser&#x27;);
+const bodyParser = require(&#x27;body-parser&#x27;);
 
-var routes = require(&#x27;./routes/index&#x27;);
-var users = require(&#x27;./routes/users&#x27;);
+const routes = require(&#x27;./routes/index&#x27;);
+const users = require(&#x27;./routes/users&#x27;);
 
-var publicPath = path.join(__dirname, &#x27;../public&#x27;);
+const publicPath = path.join(__dirname, &#x27;../public&#x27;);
 
-var app = express();
+const app = express();
 
 log.info(&#x27;app init&#x27;);
 log.debug(&#x27;env is \x1b[34m&#x27; + config.env.current + &#x27;\x1b[39m&#x27;);
