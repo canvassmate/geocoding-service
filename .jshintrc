@@ -1,0 +1,22 @@
+{
+  // lang
+  "undef": true,
+  "unused": true,
+  "eqeqeq": true,
+  "latedef": true,
+  "forin": true, // requires all for in loops to filter object's items
+  "noarg": true, // prohibits the use of deprecated arguments.caller and arguments.callee
+  "esnext": true, // ECMAScript 6 (Harmony)
+  // lang lax
+  "boss": true,
+  "eqnull": true,
+  // style
+  "curly": true,
+  "indent": 2,
+  "newcap": true, //requires capitalization of names of constructor functions
+  "quotmark": "single",
+  // env
+  "node": true,
+  // globals
+  "predef": [ "config" ] // CoffeeScript's config namespace
+}
