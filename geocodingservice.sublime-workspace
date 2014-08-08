@@ -1,0 +1,898 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cur",
+				"currentEnv"
+			],
+			[
+				"app",
+				"appName"
+			],
+			[
+				"cu",
+				"currentEnv"
+			],
+			[
+				"keep",
+				"keepclassmembernames"
+			],
+			[
+				"wait",
+				"wait_for_transition_animation"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/app.js",
+			"settings":
+			{
+				"buffer_size": 1695,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/routes/index.js",
+			"settings":
+			{
+				"buffer_size": 607,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/private/tmp/food/app.js",
+			"settings":
+			{
+				"buffer_size": 1376,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/src/server.js",
+			"settings":
+			{
+				"buffer_size": 1796,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/src/request_handler.js",
+			"settings":
+			{
+				"buffer_size": 3248,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/src/router.js",
+			"settings":
+			{
+				"buffer_size": 896,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/gendocs.sh",
+			"settings":
+			{
+				"buffer_size": 200,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 147.0,
+		"selected_items":
+		[
+			[
+				"project",
+				"Project: Save As"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				"bash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"jade",
+				"Set Syntax: Jade"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"javascr",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"snippet",
+				"Snippet: Object key — key: \"value\""
+			],
+			[
+				"snippet p",
+				"Snippet: Prototype"
+			],
+			[
+				"coffee",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"Packa",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"sideb",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"sideba",
+				"View: Toggle Open Files in Side Bar"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 120.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/matux/Library/Application Support/Sublime Text 3/Packages/User/JavaScript.sublime-settings",
+		"/Users/matux/Library/Application Support/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/Users/matux/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/matux/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/matux/Repository/canvassmate-geocodingservice/bin/www",
+		"/Users/matux/Repository/canvassmate-geocodingservice/package.json",
+		"/Users/matux/Repository/canvassmate-geocodingservice/app/config/config.coffee",
+		"/Users/matux/Repository/canvassmate-geocodingservice/app/config/morgan-ext.js",
+		"/Users/matux/Repository/canvassmate-geocodingservice/app/routes/index.js",
+		"/Users/matux/Repository/canvassmate-geocodingservice/app/views/index.jade",
+		"/Users/matux/Repository/canvassmate-geocodingservice/app/views/layout.jade",
+		"/Users/matux/Repository/canvassmate-geocodingservice/public/stylesheets/style.css",
+		"/Users/matux/Repository/canvassmate-geocodingservice/config.coffee",
+		"/Users/matux/Repository/canvassmate-geocodingservice/app/config/log4js.json",
+		"/Users/matux/Repository/canvassmate-geocodingservice/app/app.js",
+		"/Users/matux/Repository/canvassmate-geocodingservice/config.js",
+		"/Users/matux/Repository/canvassmate-geocodingservice/app/views/error.jade",
+		"/Users/matux/Repository/canvassmate-geocodingservice/app/views/index.jad",
+		"/Users/matux/Repository/canvassmate-geocodingservice/app/routes/users.js",
+		"/Users/matux/Repository/canvassmate-geocodingservice/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/Cakefile",
+		"/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/src/some.html",
+		"/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/src/module.coffee",
+		"/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/node_modules/cli-color/package.json",
+		"/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/node_modules/cli-color/node_modules/es5-ext/string/#/plain-replace-all.js",
+		"/Users/matux/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/matux/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/node_modules/cli-color/node_modules/es5-ext/number/is-number.js",
+		"/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/node_modules/cli-color/node_modules/es5-ext/array/#/some-right.js",
+		"/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/docs/files/src_util.js.html",
+		"/Users/matux/Downloads/Star_Trek_Voyager - season 6.en/Star Trek Voyager - 6x24 - Life Line.DVD.en.srt",
+		"/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/src/server.js",
+		"/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithHaskell/parallel/parallel.hs",
+		"/Users/matux/.bash_profile",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/vagrant/Vagrantfile",
+		"/Users/matux/Repository/External/nodejs/lib/http.js",
+		"/Users/matux/Repository/External/nodejs/lib/url.js",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt/Base.lproj/Main_iPhone.storyboard",
+		"/usr/local/lib/node_modules/ctags/lib/ctags.js",
+		"/Users/matux/Desktop/Up.In.The.Air.2009.720p.BrRip.x264.YIFY.srt",
+		"/Users/matux/Downloads/Localizable.strings",
+		"/Users/matux/Downloads/Star_Trek_Voyager - season 5.en/Star Trek Voyager - 5x15-16 - Dark Frontier  Part I.DVD.en.srt",
+		"/Users/matux/Downloads/Star_Trek_Voyager - season 5.en/Star Trek Voyager - 5x14 - Bliss.DVD.en.srt",
+		"/Volumes/M3/Media/Movies/Up.In.The.Air.2009.720p.BrRip.x264.YIFY.srt",
+		"/Users/matux/Downloads/db-backup-2013-06-26.sql",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt/ViewControllers/Collection/WHIEntryCollectionViewController.m",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt/Support/Localizable.strings",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt.xcodeproj/xcshareddata/xcschemes/Efron Debug.xcscheme",
+		"/Users/matux/Desktop/efron.html",
+		"/Users/matux/Desktop/Efron.plist",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt/ViewControllers/Entry Details/WHIEntryDetailsViewController.m",
+		"/Users/matux/Repository/canvassmate-android/canvassmate/src/main/AndroidManifest.xml",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt.xcodeproj/project.pbxproj",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt/Classes/Utility/WHIPaginator.m",
+		"/Volumes/localhost/weheartit/app/models/entry.rb",
+		"/Volumes/localhost/weheartit/app/models/tag.rb",
+		"/Volumes/localhost/weheartit/app/models/model_search.rb",
+		"/Volumes/localhost/weheartit/db/qa_fixtures/04efron.rb",
+		"/Volumes/localhost/weheartit/spec/support/model_factory.rb",
+		"/Volumes/localhost/weheartit/app/models/sitemap/tags.rb",
+		"/Volumes/localhost/weheartit/dump.rdb",
+		"/Volumes/localhost/weheartit/config/development_apn_certificate.pem",
+		"/Volumes/localhost/weheartit/app/workers/cassandra/dashboard_generator_worker.rb",
+		"/Volumes/localhost/weheartit/app/models/admin/entry_moderator.rb",
+		"/Volumes/localhost/weheartit/app/finders/entry_finder.rb",
+		"/Volumes/localhost/weheartit/spec/models/entry/entry_tumblr_via_links_spec.rb",
+		"/Volumes/localhost/weheartit/app/models/email_bounce.rb",
+		"/Volumes/localhost/weheartit/app/assets/javascripts/modules/views/entry/box_tagged_with.module.js",
+		"/Volumes/localhost/weheartit/app/views/admin/entries/_moderate_entries.html.erb",
+		"/Volumes/localhost/weheartit/app/views/actions/mark_oauth_token.js.erb",
+		"/Volumes/localhost/weheartit/bin/mongrel_rpm",
+		"/Volumes/localhost/weheartit/bin/newrelic",
+		"/Volumes/localhost/weheartit/app/views/new_account/new_user_step_invite.html.erb",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt Acceptance Tests/Tests/Settings/LinkFacebook.m",
+		"/Users/matux/Repository/whi-weheartit/features/entry.feature",
+		"/Users/matux/Repository/whi-weheartit/app/views/user_account/edit_notices.html.erb",
+		"/Users/matux/Repository/whi-weheartit/bin/erubis",
+		"/Users/matux/Repository/whi-weheartit/app/models/open_graph/tag.rb",
+		"/Users/matux/Repository/whi-weheartit/app/models/tag.rb",
+		"/Users/matux/Repository/whi-weheartit/config/tag_groups.yml",
+		"/Users/matux/Repository/whi-weheartit/public/api/tumblr_auth.json",
+		"/Users/matux/Repository/whi-weheartit/bin/therubyracer",
+		"/Users/matux/Repository/whi-weheartit/spec/support/factory_helper.rb",
+		"/Users/matux/Repository/whi-weheartit/bin/facter",
+		"/Users/matux/Repository/whi-weheartit/app/controllers/facebook_auth_common.rb",
+		"/Users/matux/Repository/whi-weheartit/app/models/following_association.rb",
+		"/Users/matux/Repository/canvassmate-android/canvassmate/proguard-release.txt",
+		"/Users/matux/Repository/canvassmate-android/canvassmate/build.gradle",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt Acceptance Tests/Tests/Find Friends/FindFriends.m",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt/Classes/EventBus/WHIEventBus.m",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/vagrant.sh",
+		"/Users/matux/Repository/whi-weheartit-android/upload_strings.sh",
+		"/Users/matux/Repository/whi-weheartit-android/update_translations.sh",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt/ViewControllers/CollectionSelect/WHICollectionsListViewController.m",
+		"/Users/matux/Repository/canvassmate-android/canvassmate/canvassmate.iml",
+		"/Users/matux/Repository/canvassmate-android/local.properties",
+		"/Users/matux/Repository/canvassmate-android/settings.gradle",
+		"/Users/matux/Repository/canvassmate-android/canvassmate-android.iml",
+		"/Users/matux/Repository/canvassmate-android/build.gradle",
+		"/Users/matux/Repository/canvassmate-android/canvassmate/proguard-adhoc.txt",
+		"/Users/matux/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/4F997403-A583-480D-ACA3-328A818A02A2/PetMD/PetMD/ArticlesTableView.m",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/Podfile",
+		"/Users/matux/Repository/External/KIF/KIF.xcodeproj/project.pbxproj",
+		"/Users/matux/Repository/External/KIF/Test Host/en.lproj/MainStoryboard.storyboard",
+		"/Users/matux/Repository/External/KIF/KIF Tests/TappingTests.m",
+		"/Users/matux/Repository/External/KIF/Classes/KIFUITestActor.m",
+		"/Users/matux/Repository/External/KIF/Classes/KIFUITestActor.h",
+		"/Users/matux/Repository/External/KIF/Classes/KIFTestActor.m",
+		"/Users/matux/Repository/canvassmate-android/android-slidinguppanel/library/build.gradle",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt/ViewControllers/search/WHISearchResultsViewController.m",
+		"/Users/matux/Repository/whi-weheartit-ios/weheartit/Resources/upload_strings.sh",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/Constants/NotificationKeys.h",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/WeHeartIt/ViewControllers/User/WHIUserCollectionsViewController.m",
+		"/Users/matux/Repository/whi-weheartit-android/local.properties",
+		"/Users/matux/Repository/whi-weheartit-android/weheartit/build.gradle",
+		"/Users/matux/Downloads/star.trek.the.next.generation.the.measure.of.a.man.(1989).eng.1cd.(3877483)/Star Trek TNG - 2x09 - The Measure of a Man [NiteShdw].srt",
+		"/Users/matux/Downloads/star.trek.the.next.generation.loud.as.a.whisper.(1989).eng.1cd.(3876411)/Star Trek TNG - 2x05 - Loud As A Whisper [NiteShdw].srt",
+		"/Users/matux/Desktop/error.html",
+		"/Users/matux/Downloads/We_Heart_It-6.mobileprovision",
+		"/Users/matux/Downloads/aps_development.cer",
+		"/Users/matux/Repository/whi-weheartit-ios/weheartit/Resources/en.lproj/Localizable.strings",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/lcl_config_components.h.pods",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/LCLLogFileConfig.h",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/setup",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/LCLLogFileConfig.h.tmp",
+		"/Users/matux/Repository/whi-weheartit-ios-rewrite/lcl_config_extensions.h.pods",
+		"/Users/matux/Downloads/explistemptygroup/src/aexp/explistemptygroup/SimpleExpandableListAdapterWithEmptyGroups.java",
+		"/Users/matux/Repository/canvassmate-android/android-slidinguppanel/library/src/com/sothree/slidinguppanel/SlidingUpPanelLayout.java",
+		"/Users/matux/Repository/canvassmate-android/android-slidinguppanel/library/res/values/attrs.xml"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"logger",
+			"x",
+			"var",
+			"r",
+			"R",
+			"r",
+			"R",
+			"r",
+			"R",
+			"r",
+			"var",
+			"{\n",
+			"url",
+			"var",
+			"require",
+			"http",
+			"var",
+			"function parse",
+			"function url",
+			"request",
+			"onRequest",
+			"WHIUserCanvasTopView",
+			"NSDebugEnabled",
+			">>>>",
+			">>>",
+			".\n",
+			"tag",
+			"mockNonmembers",
+			"rsa",
+			">>>",
+			">>>>",
+			">>>",
+			">>",
+			">>>>",
+			"OK",
+			"WHITextView",
+			"add",
+			"UITableView",
+			"Photo,",
+			"CollectionView",
+			"UICollectionView",
+			">>>",
+			"try again",
+			"\"Okay",
+			"animatePadding",
+			">>>",
+			"case",
+			"enum",
+			"comment",
+			"/*",
+			"//",
+			"^",
+			"_oc",
+			"'{'",
+			"finally",
+			"catch",
+			"'{'",
+			"'{",
+			"'{'",
+			"finally",
+			"'}'",
+			">>>>",
+			"mode_full",
+			"brace",
+			"nl_",
+			"return",
+			"nl_",
+			"return",
+			"brace",
+			"remove",
+			"liner",
+			"single",
+			"brace",
+			"nl_",
+			"block",
+			"blk",
+			"'(",
+			"nl_",
+			"n._",
+			"def_",
+			"return",
+			"nl_",
+			"nl",
+			"array",
+			"_oc",
+			"eat_blanks_before_close_brace",
+			"output_tab_size",
+			"= 4",
+			"indent_columns",
+			"ping/",
+			"404",
+			"heart",
+			"weheartit",
+			"Increment Build Version",
+			"Check pods",
+			"following",
+			"Fer",
+			"Collection",
+			"Unsafe_title",
+			"unsafe",
+			"I tap the search bar",
+			"I open the sidebar",
+			"fill_in_field",
+			"ConfirmAlertView",
+			"make",
+			"error",
+			"Object",
+			"onCreateDialog",
+			"getAccountNames",
+			"nobody",
+			"anonymous",
+			"%@_F",
+			"%@_Friends"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1695,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1012,
+								1012
+							]
+						],
+						"settings":
+						{
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								222,
+								8,
+								4,
+								0,
+								36,
+								18,
+								0,
+								0,
+								0,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/routes/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 607,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								607,
+								607
+							]
+						],
+						"settings":
+						{
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								222,
+								8,
+								4,
+								0,
+								18,
+								17,
+								0,
+								0,
+								0,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "/private/tmp/food/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1376,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								517,
+								517
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/src/server.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								163,
+								163
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/src/request_handler.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3248,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2,
+								2
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/src/router.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 896,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/matux/Repository/siliconillusions-FunWith/siliconillusions-FunWithNodeJS/helloserver/gendocs.sh",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 200,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								200,
+								200
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			],
+			[
+				2,
+				0,
+				3,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.33,
+			0.66,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "geocodingservice.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"www",
+				"bin/www"
+			],
+			[
+				"server",
+				"src/server.js"
+			],
+			[
+				"src/",
+				"src/router.js"
+			],
+			[
+				"route",
+				"src/router.js"
+			],
+			[
+				"tag",
+				"app/models/tag.rb"
+			],
+			[
+				"entry",
+				"app/models/entry.rb"
+			],
+			[
+				"model_fac",
+				"spec/support/model_factory.rb"
+			],
+			[
+				"entry.rb",
+				"app/models/entry.rb"
+			],
+			[
+				"tag.rb",
+				"app/models/tag.rb"
+			],
+			[
+				"factory",
+				"spec/support/model_factory.rb"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 207.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 2
+	}
+}

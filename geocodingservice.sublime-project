@@ -1,0 +1,10 @@
+{
+  "url": "http://localhost:9600",
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		}
+	]
+}
