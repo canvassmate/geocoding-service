@@ -1,14 +1,21 @@
 #!/usr/bin/env node
+/**
+  www
+  canvassmate-geocodingservice
+
+  created by matux (matias.pequeno@gmail.com) on 2014-08-04
+  copyright (c) 2014 Silicon Illusions. all rights reserved.
+
+  Application entry point
+ */
+'use strict';
+
 require('coffee-script/register');
 GLOBAL.config = require('../app/config/config.coffee');
 var log = config.getLogger('www');
 var app = require('../app/app');
 
-//console.log(GLOBAL.config);
-//var debug = require('debug')('geocoding-service');
-//debug("hello");
-
-app.set('port', config.server['port']);
+app.set('port', config.server.port);
 
 var server = app.listen(app.get('port'), function() {
   log.info('listening port ' + server.address().port);
