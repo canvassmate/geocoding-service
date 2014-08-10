@@ -10,13 +10,17 @@
  */
 'use strict';
 
-function Logger(tag) {
+function Logger(tag, lvl) {
   if (typeof Logger.log4js === 'undefined') {
     Logger.log4js = require('log4js');
-    Logger.log4js.configure('./app/config/log4js.json', { reloadSecs: 60, cwd: './var/log' });  
+    // configuration
+    let appenders = [ { type: 'console', layout: { type: 'pattern', pattern: '%[[%d{ABSOLUTE}][%.1p][%c] %m%]' } },
+                      { type: 'file', absolute: false, filename: 'logfile.log', maxLogSize: 20480, backups: 3 } ];
+    Logger.log4js.configure({ appenders: appenders }, { cwd: './var/log' });
   }
 
   this.logger = Logger.log4js.getLogger(tag);
+  this.logger.setLevel(typeof lvl === 'undefined' ? 'ALL' : lvl);
 }
 
 Logger.prototype.trace = function(msg) {
