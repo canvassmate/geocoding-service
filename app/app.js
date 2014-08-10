@@ -3,7 +3,7 @@
   canvassmate-geocodingservice
 
   created by matux (matias.pequeno@gmail.com) on 2014-08-04
-  copyright (c) 2014 Silicon Illusions. all rights reserved.
+  copyright (c) 2014 canvassmate. all rights reserved.
 
   Main app module
   @module app
@@ -16,7 +16,7 @@ const log = config.logger('app'),
       path = require('path'),
       favicon = require('serve-favicon'),
       morgan = require('morgan'),
-      morganext = require('./config/morgan-ext'),
+      morganext = require('./extensions/morgan-ext'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser');
 

@@ -17,7 +17,7 @@ exports.env[currentEnv] = true
 
 # log config
 #if currentEnv isnt 'production' then process.env['DEBUG'] = '*' # node-debug
-exports.logger = require('./log4js-ext').logger
+exports.logger = require('../extensions/log4js-ext').logger
 
 # server config
 exports.server =
