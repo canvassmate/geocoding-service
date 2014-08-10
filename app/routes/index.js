@@ -12,10 +12,9 @@
 'use strict';
 
 const express = require('express'),
-      runtime = require('../config/runtime'),
-      stacktrace = require('stack-trace');
+      runtime = require('../config/runtime');
 const router = express.Router();
-const log = config.getLogger('router');
+const log = config.logger('router');
 
 // GET home page.
 router.get('/', function(req, res) {
@@ -30,10 +29,6 @@ router.get('/geocode', function(req, res) {
 
 // Reverse Geocoding
 router.get('/reverse_geocode', function(req, res) {
-  var trace = stacktrace.get()[0];
-  log.warn(trace.getFileName());
-  return;
-
   switch (req.accepts('json')) {
     case 'json': {
       let lat = req.query.lat,

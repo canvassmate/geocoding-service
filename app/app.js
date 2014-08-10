@@ -11,7 +11,7 @@
  */
 'use strict';
 
-const log = config.getLogger('app'),
+const log = config.logger('app'),
       express = require('express'),
       path = require('path'),
       favicon = require('serve-favicon'),

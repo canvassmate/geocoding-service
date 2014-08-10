@@ -12,11 +12,11 @@
 
 require('coffee-script/register');
 GLOBAL.config = require('../app/config/config.coffee');
-var log = config.getLogger('www');
+var log = config.logger('www');
 var app = require('../app/app');
 
 app.set('port', config.server.port);
 
 var server = app.listen(app.get('port'), function() {
-  log.info('listening port ' + server.address().port);
+  log.info('listening to port \x1b[34m' + server.address().port + '\x1b[39m');
 });
