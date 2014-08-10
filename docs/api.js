@@ -1,9 +1,13 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
-    "classes": [],
+    "classes": [
+        "Log4js-Ext",
+        "Morgan-Ext"
+    ],
     "modules": [
         "app",
         "config",
+        "extensions",
         "routes"
     ],
     "allModules": [
@@ -15,7 +19,12 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "config",
             "name": "config",
-            "description": "morgan-ext.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nConfiguration and utility"
+            "description": "runtime.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nIndex route"
+        },
+        {
+            "displayName": "extensions",
+            "name": "extensions",
+            "description": "log4js-ext.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-10\ncopyright (c) 2014 Silicon Illusions. all rights reserved."
         },
         {
             "displayName": "routes",

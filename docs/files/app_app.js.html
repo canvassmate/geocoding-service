@@ -41,6 +41,10 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/Log4js-Ext.html">Log4js-Ext</a></li>
+            
+                <li><a href="../classes/Morgan-Ext.html">Morgan-Ext</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -48,6 +52,8 @@
                 <li><a href="../modules/app.html">app</a></li>
             
                 <li><a href="../modules/config.html">config</a></li>
+            
+                <li><a href="../modules/extensions.html">extensions</a></li>
             
                 <li><a href="../modules/routes.html">routes</a></li>
             
@@ -101,18 +107,19 @@
   @module app
   @main app
  */
+&#x27;use strict&#x27;;
 
-const log = config.getLogger(&#x27;app&#x27;);
-const express = require(&#x27;express&#x27;);
-const path = require(&#x27;path&#x27;);
-const favicon = require(&#x27;serve-favicon&#x27;);
-const morgan = require(&#x27;morgan&#x27;);
-const morganext = require(&#x27;./config/morgan-ext&#x27;);
-const cookieParser = require(&#x27;cookie-parser&#x27;);
-const bodyParser = require(&#x27;body-parser&#x27;);
+const log = config.logger(&#x27;app&#x27;),
+      express = require(&#x27;express&#x27;),
+      path = require(&#x27;path&#x27;),
+      favicon = require(&#x27;serve-favicon&#x27;),
+      morgan = require(&#x27;morgan&#x27;),
+      morganext = require(&#x27;./extensions/morgan-ext&#x27;),
+      cookieParser = require(&#x27;cookie-parser&#x27;),
+      bodyParser = require(&#x27;body-parser&#x27;);
 
-const routes = require(&#x27;./routes/index&#x27;);
-const users = require(&#x27;./routes/users&#x27;);
+const routes = require(&#x27;./routes/index&#x27;),
+      users = require(&#x27;./routes/users&#x27;);
 
 const publicPath = path.join(__dirname, &#x27;../public&#x27;);
 
@@ -123,7 +130,7 @@ log.debug(&#x27;env is \x1b[34m&#x27; + config.env.current + &#x27;\x1b[39m&#x27
 
 // http logging
 morgan.format(&#x27;custom&#x27;, morganext.format);
-var httpLogger = morgan(&#x27;custom&#x27;);
+const httpLogger = morgan(&#x27;custom&#x27;);
 app.use(httpLogger);
 
 // view engine setup
@@ -143,9 +150,9 @@ app.use(&#x27;/users&#x27;, users);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
-	var err = new Error(&#x27;Not Found&#x27;);
-	err.status = 404;
-	next(err);
+	const err = new Error(&#x27;Not Found&#x27;);
+  err.status = 404;
+  next(err);
 });
 
 // Error Handlers

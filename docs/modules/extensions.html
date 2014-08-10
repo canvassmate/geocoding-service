@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app/config/morgan-ext.js</title>
+    <title>extensions</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -41,6 +41,10 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/Log4js-Ext.html">Log4js-Ext</a></li>
+            
+                <li><a href="../classes/Morgan-Ext.html">Morgan-Ext</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -48,6 +52,8 @@
                 <li><a href="../modules/app.html">app</a></li>
             
                 <li><a href="../modules/config.html">config</a></li>
+            
+                <li><a href="../modules/extensions.html">extensions</a></li>
             
                 <li><a href="../modules/routes.html">routes</a></li>
             
@@ -86,69 +92,59 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: app/config/morgan-ext.js</h1>
+                        <h1>extensions Module</h1>
+<div class="box clearfix meta">
+    
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-/**
-  morgan-ext.js
-  canvassmate-geocodingservice
+    
 
-  created by matux (matias.pequeno@gmail.com) on 2014-08-04
-  copyright (c) 2014 Silicon Illusions. all rights reserved.
+    
+        <div class="foundat">
+            Defined in: <a href="../files/app_extensions_morgan-ext.js.html#l17"><code>app&#x2F;extensions&#x2F;morgan-ext.js:17</code></a>
+        </div>
+    
 
-  Configuration and utility
-  @module config
- */
-const moment = require(&#x27;moment&#x27;);
-const bytes = require(&#x27;bytes&#x27;);
+    
+</div>
 
-module.exports.format = format;
 
-/**
-  Compile &#x60;fmt&#x60; into a function.
 
-  @param {String} fmt Format to compile
-  @return {Function}
-  @private
- */
-function compile(fmt) {
-  fmt = fmt.replace(/&quot;/g, &#x27;\\&quot;&#x27;);
-  var js = &#x27;  return &quot;&#x27; + fmt.replace(/:([-\w]{2,})(?:\[([^\]]+)\])?/g, function(_, name, arg) {
-    return &#x27;&quot;\n    + (tokens[&quot;&#x27; + name + &#x27;&quot;](req, res, &quot;&#x27; + arg + &#x27;&quot;) || &quot;-&quot;) + &quot;&#x27;;
-  }) + &#x27;&quot;;&#x27;
-  return new Function(&#x27;tokens, req, res&#x27;, js);
-}
+<div class="box intro">
+    <p>log4js-ext.js
+canvassmate-geocodingservice</p>
+<p>created by matux (matias.pequeno@gmail.com) on 2014-08-10
+copyright (c) 2014 Silicon Illusions. all rights reserved.</p>
 
-/**
-  Custom format function inspired on morgan&#x27;s &#x60;dev&#x60;
+</div>
 
-  @param {String} tokens
-  @param {Object} req
-  @param {Object} res
-  @return {String} log string
-  @public
- */
-function format(tokens, req, res) {
-  var status = res.statusCode;
-  var color = status &gt;= 500 ? 31 :
-              status &gt;= 400 ? 33 :
-              status &gt;= 300 ? 36 : 32;
 
-  var len = parseInt(res.getHeader(&#x27;Content-Length&#x27;), 10);
-  len = isNaN(len) ? &#x27;&#x27; : &#x27; - &#x27; + bytes(len);
 
-  return &#x27;\x1b[90m&#x27; + &#x27;[&#x27; + moment().format(&#x27;HH:mm:ss.SSS&#x27;) + &#x27;] &#x27; +
-    &#x27;\x1b[1m\x1b[90m&#x27; + req.method + &#x27;\x1b[22m&#x27; +
-    &#x27; &#x27; + (req.originalUrl || req.url) + &#x27; &#x27; +
-    &#x27;\x1b[&#x27; + color + &#x27;m&#x27; + status +
-    &#x27; \x1b[90m&#x27; +
-    (new Date - req._startTime) +
-    &#x27;ms&#x27; + len +
-    &#x27;\x1b[0m&#x27;;
-}
+<div class="yui3-g">
+    <div class="yui3-u-1-2">
+        
+            <p>This module provides the following classes:</p>
 
-    </pre>
+            <ul class="module-classes">
+            
+                <li class="module-class">
+                    <a href="../classes/Log4js-Ext.html">
+                        Log4js-Ext
+                    </a>
+                </li>
+            
+                <li class="module-class">
+                    <a href="../classes/Morgan-Ext.html">
+                        Morgan-Ext
+                    </a>
+                </li>
+            
+            </ul>
+        
+    </div>
+
+    <div class="yui3-u-1-2">
+        
+    </div>
 </div>
 
                     </div>

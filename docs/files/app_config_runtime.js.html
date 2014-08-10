@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app</title>
+    <title>app/config/runtime.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -92,112 +92,47 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>app Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: app/config/runtime.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+  runtime.js
+  canvassmate-geocodingservice
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/app_extensions_morgan-ext.js.html#l17"><code>app&#x2F;extensions&#x2F;morgan-ext.js:17</code></a>
-        </div>
-    
+  created by matux (matias.pequeno@gmail.com) on 2014-08-04
+  copyright (c) 2014 Silicon Illusions. all rights reserved.
 
-    
-</div>
+  Index route
+  @module app
+  @submodule config
+ */
+&#x27;use strict&#x27;;
 
+/**
+  Get the stack as an array of call sites.
+ */
+module.exports.getStack = function getStack() {
+  var limit = Error.stackTraceLimit;
+  var obj = {};
+  var prep = Error.prepareStackTrace;
 
+  Error.prepareStackTrace = function(obj, stack) { return stack; };
+  Error.stackTraceLimit = Math.max(10, limit);
 
-<div class="box intro">
-    <p>app.js
-canvassmate-geocodingservice</p>
-<p>created by matux (matias.pequeno@gmail.com) on 2014-08-04
-copyright (c) 2014 Silicon Illusions. all rights reserved.</p>
-<p>Main app module</p>
+  // capture the stack
+  Error.captureStackTrace(obj);
 
-</div>
+  // slice this function off the top
+  var stack = obj.stack.slice(1);
 
+  Error.prepareStackTrace = prep;
+  Error.stackTraceLimit = limit;
 
+  return stack;
+};
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
-
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/Log4js-Ext.html">
-                        Log4js-Ext
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/Morgan-Ext.html">
-                        Morgan-Ext
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
-
-    <div class="yui3-u-1-2">
-        
-            <p>This module is a rollup of the following modules:</p>
-
-            <ul class="module-submodules">
-            
-                <li class="module-submodule">
-                    <a href="../modules/config.html">
-                        config
-                    </a>
-
-                    <div class="module-submodule-description">
-                        runtime.js
-canvassmate-geocodingservice
-
-created by matux (matias.pequeno@gmail.com) on 2014-08-04
-copyright (c) 2014 Silicon Illusions. all rights reserved.
-
-Index route
-                    </div>
-                </li>
-            
-                <li class="module-submodule">
-                    <a href="../modules/extensions.html">
-                        extensions
-                    </a>
-
-                    <div class="module-submodule-description">
-                        log4js-ext.js
-canvassmate-geocodingservice
-
-created by matux (matias.pequeno@gmail.com) on 2014-08-10
-copyright (c) 2014 Silicon Illusions. all rights reserved.
-                    </div>
-                </li>
-            
-                <li class="module-submodule">
-                    <a href="../modules/routes.html">
-                        routes
-                    </a>
-
-                    <div class="module-submodule-description">
-                        index.js
-canvassmate-geocodingservice
-
-created by matux (matias.pequeno@gmail.com) on 2014-08-04
-copyright (c) 2014 Silicon Illusions. all rights reserved.
-
-Index route
-                    </div>
-                </li>
-            
-            </ul>
-        
-    </div>
+    </pre>
 </div>
 
                     </div>
