@@ -41,6 +41,10 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/Log4js-Ext.html">Log4js-Ext</a></li>
+            
+                <li><a href="../classes/Morgan-Ext.html">Morgan-Ext</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -48,6 +52,8 @@
                 <li><a href="../modules/app.html">app</a></li>
             
                 <li><a href="../modules/config.html">config</a></li>
+            
+                <li><a href="../modules/extensions.html">extensions</a></li>
             
                 <li><a href="../modules/routes.html">routes</a></li>
             
@@ -101,25 +107,46 @@
   @module app
   @submodule routes
  */
+&#x27;use strict&#x27;;
 
-var express = require(&#x27;express&#x27;);
-var router = express.Router();
-var log = config.getLogger(&#x27;router&#x27;);
+const express = require(&#x27;express&#x27;),
+      runtime = require(&#x27;../config/runtime&#x27;);
+const router = express.Router();
+const log = config.logger(&#x27;router&#x27;);
 
 // GET home page.
 router.get(&#x27;/&#x27;, function(req, res) {
 	res.render(&#x27;index&#x27;, { title: &#x27;Canvassmate Geocoding Web Service&#x27; });
 });
 
-// Simple check
-router.get(&#x27;/api&#x27;, function(req, res) {
-	res.send(&#x27;API is running&#x27;);
+// Geocoding
+router.get(&#x27;/geocode&#x27;, function(req, res) {
+  log.error(&#x27;Geocoding not implemented.&#x27;);
+  res.status(501);
 });
 
-// Error example
-router.get(&#x27;/error&#x27;, function(req, res, next) {
-	log.error(&quot;Z0MG!1 Error!&quot;);
-	next(new Error(&#x27;WTF Error!&#x27;));
+// Reverse Geocoding
+router.get(&#x27;/reverse_geocode&#x27;, function(req, res) {
+  switch (req.accepts(&#x27;json&#x27;)) {
+    case &#x27;json&#x27;: {
+      let lat = req.query.lat,
+          lon = req.query.lon;
+
+      if (typeof lat === &#x27;undefined&#x27; || typeof lon === &#x27;undefined&#x27;) {
+        log.error(&#x27;reverse_geocode: missing params&#x27;);
+        res.status(422);
+      } else {
+        log.debug(&#x27;lat: &#x27; + lat + &#x27;, lon: &#x27; + lon);
+
+        res.status(200).json({});
+      }
+      break;
+    } 
+    default:
+      log.warn(&#x27;req doesn\&#x27;t accept json&#x27;);
+      res.status(406);
+      break;
+  }
 });
 
 module.exports = router;

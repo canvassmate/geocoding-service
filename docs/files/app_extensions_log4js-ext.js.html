@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app/routes/users.js</title>
+    <title>app/extensions/log4js-ext.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -92,32 +92,122 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: app/routes/users.js</h1>
+                        <h1 class="file-heading">File: app/extensions/log4js-ext.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
-  users.js
+  log4js-ext.js
   canvassmate-geocodingservice
 
-  created by matux (matias.pequeno@gmail.com) on 2014-08-04
+  created by matux (matias.pequeno@gmail.com) on 2014-08-10
   copyright (c) 2014 Silicon Illusions. all rights reserved.
 
-  Users route
   @module app
-  @submodule routes
+  @submodule extensions
  */
 &#x27;use strict&#x27;;
 
-const express = require(&#x27;express&#x27;);
-const router = express.Router();
+const INVALID_FRAME = -1; // signals the need to track the base (non-Logger) frame in the stack
+const stacktrace = require(&#x27;stack-trace&#x27;),
+      path = require(&#x27;path&#x27;);
 
-// GET users listing
-router.get(&#x27;/&#x27;, function(req, res) {
-	res.send(&#x27;respond with a resource&#x27;);
-});
+module.exports.logger = function(tag, lvl) {
+  return new Log4jsExt(tag, lvl);
+};
 
-module.exports = router;
+/**
+  A utility that wraps around log4js and extends its functionality without changing its usage.
+
+  @class Log4js-Ext
+  @param {String} tag=&#x27;default&#x27; An optional tag to describe this Logger
+  @param {String} lvl=&#x27;ALL&#x27; An optional Logging level (&#x60;TRACE&#x60;, &#x60;DEBUG&#x60;, &#x60;INFO&#x60;, &#x60;WARN&#x60;, &#x60;ERROR&#x60;, &#x60;ALL&#x60;)
+  @constructor
+  @static
+ */
+function Log4jsExt(tag, lvl) {
+  if (typeof Log4jsExt.log4js === &#x27;undefined&#x27;) {
+    console.log(&#x27;log4js init&#x27;);
+    Log4jsExt.log4js = require(&#x27;log4js&#x27;);
+    // configuration
+    let appenders = [ { type: &#x27;console&#x27;, layout: { type: &#x27;pattern&#x27;, pattern: &#x27;%[[%d{ABSOLUTE}][%.1p]%m%]&#x27; } },
+                      { type: &#x27;file&#x27;, absolute: false, filename: &#x27;logfile.log&#x27;, maxLogSize: 20480, backups: 3 } ];
+    Log4jsExt.log4js.configure({ appenders: appenders }, { cwd: &#x27;./var/log&#x27; });
+    Log4jsExt.baseStackFrame = INVALID_FRAME;
+  }
+
+  this.logger = Log4jsExt.log4js.getLogger(tag);
+  this.logger.setLevel(typeof lvl === &#x27;undefined&#x27; ? &#x27;ALL&#x27; : lvl);
+}
+
+/**
+  Prefixes the current stacktrace frame to the provided message.
+
+  @method prefixtrace
+  @param {String} msg Message to which the frame will be prefixed.
+  @return {String} Original message prefixed with current stacktrace frame.
+ */
+Log4jsExt.prototype.prefixtrace = function(msg) {
+  const st = stacktrace.get(); 
+
+  if (Log4jsExt.baseStackFrame &lt; 0) {
+    while (st[++Log4jsExt.baseStackFrame].getTypeName() === &#x27;Log4jsExt&#x27;) {
+      continue;
+    }
+  }
+
+  const site = st[Log4jsExt.baseStackFrame],
+        file = path.basename(site.getFileName()),
+        line = site.getLineNumber(),
+        func = site.getFunctionName();
+
+  return &#x27;(&#x27; + file + &#x27;:&#x27; + line + (func !== null ? &#x27;:&#x27; + func : &#x27;&#x27;) + &#x27;) &#x27; + msg;
+};
+
+/**
+  Wraps around log4js&#x27; method of the same name.
+  @method trace
+  @param {String} msg Log message.
+ */
+Log4jsExt.prototype.trace = function(msg) {
+  this.logger.trace(this.prefixtrace(msg));
+};
+
+/**
+  Wraps around log4js&#x27; method of the same name.
+  @method debug
+  @param {String} msg Log message.
+ */
+Log4jsExt.prototype.debug = function(msg) {
+  this.logger.debug(this.prefixtrace(msg));
+};
+
+/**
+  Wraps around log4js&#x27; method of the same name.
+  @method info
+  @param {String} msg Log message.
+ */
+Log4jsExt.prototype.info = function(msg) {
+  this.logger.info(this.prefixtrace(msg));
+};
+
+/**
+  Wraps around log4js&#x27; method of the same name.
+  @method warn
+  @param {String} msg Log message.
+ */
+Log4jsExt.prototype.warn = function(msg) {
+  this.logger.warn(this.prefixtrace(msg));
+};
+
+/**
+  Wraps around log4js&#x27; method of the same name.
+  @method error
+  @param {String} msg Log message.
+ */
+Log4jsExt.prototype.error = function(msg) {
+  this.logger.error(this.prefixtrace(msg));
+};
 
     </pre>
 </div>

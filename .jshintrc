@@ -3,7 +3,7 @@
   "undef": true,
   "unused": true,
   "eqeqeq": true,
-  "latedef": true,
+  "latedef": "nofunc",
   "forin": true, // requires all for in loops to filter object's items
   "noarg": true, // prohibits the use of deprecated arguments.caller and arguments.callee
   "esnext": true, // ECMAScript 6 (Harmony)

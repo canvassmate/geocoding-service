@@ -6,7 +6,8 @@
   copyright (c) 2014 Silicon Illusions. all rights reserved.
 
   Configuration and utility
-  @module config
+  @module app
+  @submodule extensions
  */
 'use strict';
 
@@ -14,15 +15,22 @@ const moment = require('moment'),
       bytes = require('bytes');
 
 /**
-  Custom format function inspired on morgan's `dev`
+  Custom format function inspired on morgan's dev
 
+  @class Morgan-Ext
+ */
+
+/**
+  Custom format function inspired on morgan's dev
+
+  @method format
   @param {String} tokens
   @param {Object} req
   @param {Object} res
   @return {String} log string
   @public
  */
-module.exports.format = function format(tokens, req, res) {
+module.exports.format = function(tokens, req, res) {
   const status = res.statusCode;
   const color = status >= 500 ? 31 :
                 status >= 400 ? 33 :

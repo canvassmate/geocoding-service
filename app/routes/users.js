@@ -9,6 +9,7 @@
   @module app
   @submodule routes
  */
+'use strict';
 
 const express = require('express');
 const router = express.Router();
