@@ -23,7 +23,8 @@
     "log4js": "0.6.x",
     "moment": "2.8.x",
     "morgan": "1.0.x",
-    "serve-favicon": "2.0.x"
+    "serve-favicon": "2.0.x",
+    "stack-trace": "0.0.9"
   },
   "engines": {
     "node": "0.10.x",
