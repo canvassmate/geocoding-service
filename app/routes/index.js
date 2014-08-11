@@ -17,7 +17,13 @@ const express = require('express'),
 
 // GET home page.
 router.get('/', function(req, res) {
-	res.render('index', { title: 'Canvassmate Geocoding Web Service' });
+  let dict = {
+    title: 'Canvassmate Geocoding Web Service',
+    key: config.keys.google
+  };
+  res.render('index', dict, function(err, html) {
+    res.send(html);
+  });
 });
 
 function validateCoordinates(lat, lon) {
