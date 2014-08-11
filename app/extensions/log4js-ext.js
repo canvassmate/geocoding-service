@@ -47,10 +47,12 @@ function Log4jsExt(tag, lvl) {
 
   @method prefixtrace
   @param {String} msg Message to which the frame will be prefixed.
+  @param {Number} frame Optional stacktrace frame
   @return {String} Original message prefixed with current stacktrace frame.
  */
-Log4jsExt.prototype.prefixtrace = function(msg) {
-  const st = stacktrace.get(); 
+Log4jsExt.prototype.prefixtrace = function(msg, frame) {
+  const st = stacktrace.get();
+  frame = typeof frame === 'undefined' ? 0 : frame;
 
   if (Log4jsExt.baseStackFrame < 0) {
     while (st[++Log4jsExt.baseStackFrame].getTypeName() === 'Log4jsExt') {
@@ -58,10 +60,10 @@ Log4jsExt.prototype.prefixtrace = function(msg) {
     }
   }
 
-  const site = st[Log4jsExt.baseStackFrame],
+  const site = st[Log4jsExt.baseStackFrame + frame],
         file = path.basename(site.getFileName()),
         line = site.getLineNumber(),
-        func = site.getFunctionName();
+        func = site.getMethodName();
 
   return '(' + file + ':' + line + (func !== null ? ':' + func : '') + ') ' + msg;
 };
@@ -70,43 +72,48 @@ Log4jsExt.prototype.prefixtrace = function(msg) {
   Wraps around log4js' method of the same name.
   @method trace
   @param {String} msg Log message.
+  @param {Number} frame Optional stacktrace frame
  */
-Log4jsExt.prototype.trace = function(msg) {
-  this.logger.trace(this.prefixtrace(msg));
+Log4jsExt.prototype.trace = function(msg, frame) {
+  this.logger.trace(this.prefixtrace(msg, frame));
 };
 
 /**
   Wraps around log4js' method of the same name.
   @method debug
   @param {String} msg Log message.
+  @param {Number} frame Optional stacktrace frame
  */
-Log4jsExt.prototype.debug = function(msg) {
-  this.logger.debug(this.prefixtrace(msg));
+Log4jsExt.prototype.debug = function(msg, frame) {
+  this.logger.debug(this.prefixtrace(msg, frame));
 };
 
 /**
   Wraps around log4js' method of the same name.
   @method info
   @param {String} msg Log message.
+  @param {Number} frame Optional stacktrace frame
  */
-Log4jsExt.prototype.info = function(msg) {
-  this.logger.info(this.prefixtrace(msg));
+Log4jsExt.prototype.info = function(msg, frame) {
+  this.logger.info(this.prefixtrace(msg, frame));
 };
 
 /**
   Wraps around log4js' method of the same name.
   @method warn
   @param {String} msg Log message.
+  @param {Number} frame Optional stacktrace frame
  */
-Log4jsExt.prototype.warn = function(msg) {
-  this.logger.warn(this.prefixtrace(msg));
+Log4jsExt.prototype.warn = function(msg, frame) {
+  this.logger.warn(this.prefixtrace(msg, frame));
 };
 
 /**
   Wraps around log4js' method of the same name.
   @method error
   @param {String} msg Log message.
+  @param {Number} frame Optional stacktrace frame
  */
-Log4jsExt.prototype.error = function(msg) {
-  this.logger.error(this.prefixtrace(msg));
+Log4jsExt.prototype.error = function(msg, frame) {
+  this.logger.error(this.prefixtrace(msg, frame));
 };
