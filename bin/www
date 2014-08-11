@@ -4,7 +4,7 @@
   canvassmate-geocodingservice
 
   created by matux (matias.pequeno@gmail.com) on 2014-08-04
-  copyright (c) 2014 Silicon Illusions. all rights reserved.
+  copyright (c) 2014 canvassmate. all rights reserved.
 
   Application entry point
  */
@@ -12,6 +12,7 @@
 
 require('coffee-script/register');
 GLOBAL.config = require('../app/config/config.coffee');
+GLOBAL.runtime = require('../app/config/runtime');
 var log = config.logger('www');
 var app = require('../app/app');
 
