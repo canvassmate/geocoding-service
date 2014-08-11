@@ -73,7 +73,7 @@
             "tag": "main",
             "file": "app/extensions/morgan-ext.js",
             "line": 17,
-            "description": "app.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nMain app module",
+            "description": "app.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 canvassmate. all rights reserved.\n\nMain app module",
             "itemtype": "main"
         },
         "config": {
@@ -103,7 +103,7 @@
             "namespace": "",
             "file": "app/extensions/morgan-ext.js",
             "line": 17,
-            "description": "log4js-ext.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-10\ncopyright (c) 2014 Silicon Illusions. all rights reserved."
+            "description": "log4js-ext.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-10\ncopyright (c) 2014 canvassmate. all rights reserved."
         },
         "routes": {
             "name": "routes",
@@ -116,7 +116,7 @@
             "namespace": "",
             "file": "app/routes/index.js",
             "line": 1,
-            "description": "index.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nIndex route"
+            "description": "index.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 canvassmate. all rights reserved.\n\nIndex route"
         }
     },
     "classes": {
