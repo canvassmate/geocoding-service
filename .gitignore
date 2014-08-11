@@ -1,6 +1,7 @@
 # Logs
 logs
 *.log
+/var/log
 
 # Runtime data
 pids

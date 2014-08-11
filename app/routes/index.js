@@ -12,6 +12,7 @@
 'use strict';
 
 const express = require('express'),
+      ApiError = require('../extensions/error-ext').ApiError,
       log = config.logger('router'),
       router = express.Router();
 
@@ -45,8 +46,14 @@ function validateCoordinates(lat, lon) {
 
 // Geocoding
 router.get('/geocode', function(req, res) {
-  log.error('Geocoding not implemented.');
-  res.status(501);
+  switch (req.accepts('json')) {
+    case 'json':
+      new ApiError(501, 'Geocoding not implemented.').send(res);
+      break;
+    default:
+      new ApiError(406, 'req doesn\'t accept json.').send(res, res.send.bind(res));
+      break;
+  }
 });
 
 // Reverse Geocoding
@@ -70,10 +77,13 @@ router.get('/reverse_geocode', function(req, res) {
 
       break;
     } 
-    default:
-      log.error('req doesn\'t accept json');
-      res.status(406).send('req doesn\'t accept json');
+    default: {
+      let error = new Error('req doesn\'t accept json');
+      error.code = 406;
+      log.error(error.message);
+      res.status(error.code).json({ error: error.message });
       break;
+    }
   }
 });
 
