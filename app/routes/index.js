@@ -20,6 +20,23 @@ router.get('/', function(req, res) {
 	res.render('index', { title: 'Canvassmate Geocoding Web Service' });
 });
 
+function validateCoordinates(lat, lon) {
+  var error;
+
+  if (typeof lat === 'undefined' || typeof lon === 'undefined') {
+    error = new Error('reverse_geocode: missing params');
+    error.code = 422;
+  } else if (isNaN(lat) || isNaN(lon)) {
+    error = new Error('reverse_geocode: either lat or lon isNaN');
+    error.code = 422;
+  } else if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+    error = new Error('reverse_geocode: either lat or lon have invalid values');
+    error.code = 422;
+  }
+
+  return error;  
+}
+
 // Geocoding
 router.get('/geocode', function(req, res) {
   log.error('Geocoding not implemented.');
@@ -32,32 +49,23 @@ router.get('/reverse_geocode', function(req, res) {
 
   switch (req.accepts('json')) {
     case 'json': {
-      let status = 500, error;
       const lat = req.query.lat, lon = req.query.lon;
       log.debug('lat: ' + lat + ', lon: ' + lon);
 
-      if (typeof lat === 'undefined' || typeof lon === 'undefined') {
-        error = 'reverse_geocode: missing params';
-        status = 422;
-      } else if (isNaN(lat) || isNaN(lon)) {
-        error = 'reverse_geocode: either lat or lon isNaN';
-        status = 422;
-      } else if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
-        error = 'reverse_geocode: either lat or lon have invalid values';
-        status = 422;
+      let error = validateCoordinates(lat, lon);
+
+      if (typeof error === 'undefined') {
+        // 200
+
       } else {
-        status = 200;
+        log.error(error.message);
+        res.status(error.code).json({ error: error.message });
       }
 
-      if (status !== 200) {
-        log.error(error);
-      }
-
-      res.status(status).json({ error: error });
       break;
     } 
     default:
-      log.warn('req doesn\'t accept json');
+      log.error('req doesn\'t accept json');
       res.status(406).send('req doesn\'t accept json');
       break;
   }

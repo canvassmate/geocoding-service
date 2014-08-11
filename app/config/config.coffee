@@ -6,7 +6,7 @@
 
 # Set the current environment to true in the env object
 currentEnv = process.env.NODE_ENV or 'development'
-exports.appName = "geocoding-service"
+exports.appName = 'geocoding-service'
 exports.env =
 	production: false
 	staging: false
@@ -32,3 +32,7 @@ if currentEnv not in ['production', 'staging']
 # db
 exports.db =
 	URL: "mongodb://localhost:27017/#{exports.appName}_#{currentEnv}"
+
+# google api keys
+exports.keys =
+	google: 'AIzaSyBJeTdBWvg_im1XaZyw6PHj6PwhgjA3Mo8'
