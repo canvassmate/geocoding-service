@@ -12,9 +12,8 @@
 'use strict';
 
 const express = require('express'),
-      runtime = require('../config/runtime');
-const router = express.Router();
-const log = config.logger('router');
+      log = config.logger('router'),
+      router = express.Router();
 
 // GET home page.
 router.get('/', function(req, res) {
@@ -29,24 +28,37 @@ router.get('/geocode', function(req, res) {
 
 // Reverse Geocoding
 router.get('/reverse_geocode', function(req, res) {
+  runtime.logP(req.headers, 'req.headers');
+
   switch (req.accepts('json')) {
     case 'json': {
-      let lat = req.query.lat,
-          lon = req.query.lon;
+      let status = 500, error;
+      const lat = req.query.lat, lon = req.query.lon;
+      log.debug('lat: ' + lat + ', lon: ' + lon);
 
       if (typeof lat === 'undefined' || typeof lon === 'undefined') {
-        log.error('reverse_geocode: missing params');
-        res.status(422);
+        error = 'reverse_geocode: missing params';
+        status = 422;
+      } else if (isNaN(lat) || isNaN(lon)) {
+        error = 'reverse_geocode: either lat or lon isNaN';
+        status = 422;
+      } else if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+        error = 'reverse_geocode: either lat or lon have invalid values';
+        status = 422;
       } else {
-        log.debug('lat: ' + lat + ', lon: ' + lon);
-
-        res.status(200).json({});
+        status = 200;
       }
+
+      if (status !== 200) {
+        log.error(error);
+      }
+
+      res.status(status).json({ error: error });
       break;
     } 
     default:
       log.warn('req doesn\'t accept json');
-      res.status(406);
+      res.status(406).send('req doesn\'t accept json');
       break;
   }
 });

@@ -129,14 +129,16 @@ router.get(&#x27;/geocode&#x27;, function(req, res) {
 router.get(&#x27;/reverse_geocode&#x27;, function(req, res) {
   switch (req.accepts(&#x27;json&#x27;)) {
     case &#x27;json&#x27;: {
-      let lat = req.query.lat,
-          lon = req.query.lon;
+      const lat = req.query.lat, lon = req.query.lon;
+      log.debug(&#x27;lat: &#x27; + lat + &#x27;, lon: &#x27; + lon);
 
       if (typeof lat === &#x27;undefined&#x27; || typeof lon === &#x27;undefined&#x27;) {
         log.error(&#x27;reverse_geocode: missing params&#x27;);
         res.status(422);
+      } else if (isNaN(lat) || isNaN(lon)) {
+        log.error(&#x27;reverse_geocode: either lat or lon isNaN&#x27;);
+        res.status(422);
       } else {
-        log.debug(&#x27;lat: &#x27; + lat + &#x27;, lon: &#x27; + lon);
 
         res.status(200).json({});
       }
