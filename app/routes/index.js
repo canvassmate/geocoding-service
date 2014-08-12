@@ -31,14 +31,11 @@ function validateCoordinates(lat, lon) {
   var error;
 
   if (typeof lat === 'undefined' || typeof lon === 'undefined') {
-    error = new Error('reverse_geocode: missing params');
-    error.code = 422;
+    error = new ApiError(422, 'reverse_geocode: missing params.');
   } else if (isNaN(lat) || isNaN(lon)) {
-    error = new Error('reverse_geocode: either lat or lon isNaN');
-    error.code = 422;
+    error = new ApiError(422, 'reverse_geocode: either lat or lon isNaN.');
   } else if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
-    error = new Error('reverse_geocode: either lat or lon have invalid values');
-    error.code = 422;
+    error = new ApiError(422, 'reverse_geocode: either lat or lon have invalid values.');
   }
 
   return error;  
@@ -52,7 +49,6 @@ router.get('/geocode', function(req, res) {
       break;
     default:
       new ApiError(406, 'req doesn\'t accept json.').send(res, res.send.bind(res));
-      break;
   }
 });
 
@@ -77,13 +73,8 @@ router.get('/reverse_geocode', function(req, res) {
 
       break;
     } 
-    default: {
-      let error = new Error('req doesn\'t accept json');
-      error.code = 406;
-      log.error(error.message);
-      res.status(error.code).json({ error: error.message });
-      break;
-    }
+    default:
+      new ApiError(406, 'req doesn\'t accept json.').send(res.send.bind(res));
   }
 });
 

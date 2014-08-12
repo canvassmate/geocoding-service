@@ -36,6 +36,8 @@ ApiError.prototype.send = function(res, method) {
 
   res.status(this.code);
   method({ error: this.message});
+
+  return this;
 };
 
 ApiError.prototype.toString = function() {
