@@ -11,9 +11,9 @@
  */
 'use strict';
 
-const express = require('express'),
-      ApiError = require('../extensions/error-ext').ApiError,
-      log = config.logger('router'),
+const express = require('express');
+const ApiError = require('utils/apierror.js');
+const log = config.logger('router'),
       router = express.Router();
 
 // GET home page.
@@ -38,7 +38,7 @@ function validateCoordinates(lat, lon) {
     error = new ApiError(422, 'reverse_geocode: either lat or lon have invalid values.');
   }
 
-  return error;  
+  return error;
 }
 
 // Geocoding
@@ -49,6 +49,7 @@ router.get('/geocode', function(req, res) {
       break;
     default:
       new ApiError(406, 'req doesn\'t accept json.').send(res, res.send.bind(res));
+      break;
   }
 });
 
@@ -64,17 +65,16 @@ router.get('/reverse_geocode', function(req, res) {
       let error = validateCoordinates(lat, lon);
 
       if (typeof error === 'undefined') {
-        // 200
-
+        res.status(200).json({yay:'yay'});
       } else {
-        log.error(error.message);
-        res.status(error.code).json({ error: error.message });
+        error.send(res);
       }
 
       break;
     } 
     default:
       new ApiError(406, 'req doesn\'t accept json.').send(res.send.bind(res));
+      break;
   }
 });
 

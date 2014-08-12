@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --harmony
 /**
   www
   canvassmate-geocodingservice
@@ -11,10 +11,10 @@
 'use strict';
 
 require('coffee-script/register');
-GLOBAL.config = require('../app/config/config.coffee');
-GLOBAL.runtime = require('../app/config/runtime');
+GLOBAL.config = require('config/config.coffee');
+GLOBAL.runtime = require('config/runtime.js');
 var log = config.logger('www');
-var app = require('../app/app');
+var app = require('app.js');
 
 app.set('port', config.server.port);
 

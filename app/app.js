@@ -11,29 +11,27 @@
  */
 'use strict';
 
-const log = config.logger('app'),
-      express = require('express'),
+const express = require('express'),
       path = require('path'),
       favicon = require('serve-favicon'),
       morgan = require('morgan'),
-      morganext = require('./extensions/morgan-ext'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser');
 
-const routes = require('./routes/index'),
-      users = require('./routes/users');
+const morganext = require('utils/morgan-ext'),
+      routes = require('routes/index'),
+      users = require('routes/users');
 
-const publicPath = path.join(__dirname, '../public');
-
-const app = express();
+const app = express(),
+      log = config.logger('app'),
+      publicPath = path.join(__dirname, '../public');
 
 log.info('app init');
 log.debug('env is \x1b[34m' + config.env.current + '\x1b[39m');
 
 // http logging
 morgan.format('custom', morganext.format);
-const httpLogger = morgan('custom');
-app.use(httpLogger);
+app.use(morgan('custom'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

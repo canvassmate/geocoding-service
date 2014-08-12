@@ -14,8 +14,8 @@ const INVALID_FRAME = -1; // signals the need to track the base (non-Logger) fra
 const stacktrace = require('stack-trace'),
       path = require('path');
 
-module.exports.logger = function(tag, lvl) {
-  return new Log4jsExt(tag, lvl);
+module.exports = function(tag, lvl) {
+  return new Logger(tag, lvl);
 };
 
 /**
@@ -27,18 +27,18 @@ module.exports.logger = function(tag, lvl) {
   @constructor
   @static
  */
-function Log4jsExt(tag, lvl) {
-  if (typeof Log4jsExt.log4js === 'undefined') {
+function Logger(tag, lvl) {
+  if (typeof Logger.log4js === 'undefined') {
     console.log('log4js init');
-    Log4jsExt.log4js = require('log4js');
+    Logger.log4js = require('log4js');
     // configuration
     let appenders = [ { type: 'console', layout: { type: 'pattern', pattern: '%[[%d{ABSOLUTE}][%.1p]%m%]' } },
                       { type: 'file', absolute: false, filename: 'logfile.log', maxLogSize: 20480, backups: 3 } ];
-    Log4jsExt.log4js.configure({ appenders: appenders }, { cwd: './var/log' });
-    Log4jsExt.baseStackFrame = INVALID_FRAME;
+    Logger.log4js.configure({ appenders: appenders }, { cwd: './var/log' });
+    Logger.baseStackFrame = INVALID_FRAME;
   }
 
-  this.logger = Log4jsExt.log4js.getLogger(tag);
+  this.logger = Logger.log4js.getLogger(tag);
   this.logger.setLevel(typeof lvl === 'undefined' ? 'ALL' : lvl);
 }
 
@@ -50,17 +50,17 @@ function Log4jsExt(tag, lvl) {
   @param {Number} frame Optional stacktrace frame
   @return {String} Original message prefixed with current stacktrace frame.
  */
-Log4jsExt.prototype.prefixtrace = function(msg, frame) {
+Logger.prototype.prefixtrace = function(msg, frame) {
   const st = stacktrace.get();
   frame = typeof frame === 'undefined' ? 0 : frame;
 
-  if (Log4jsExt.baseStackFrame < 0) {
-    while (st[++Log4jsExt.baseStackFrame].getTypeName() === 'Log4jsExt') {
+  if (Logger.baseStackFrame < 0) {
+    while (st[++Logger.baseStackFrame].getTypeName() === 'Logger') {
       continue;
     }
   }
 
-  const site = st[Log4jsExt.baseStackFrame + frame],
+  const site = st[Logger.baseStackFrame + frame],
         file = path.basename(site.getFileName()),
         line = site.getLineNumber(),
         func = site.getMethodName();
@@ -74,7 +74,7 @@ Log4jsExt.prototype.prefixtrace = function(msg, frame) {
   @param {String} msg Log message.
   @param {Number} frame Optional stacktrace frame
  */
-Log4jsExt.prototype.trace = function(msg, frame) {
+Logger.prototype.trace = function(msg, frame) {
   this.logger.trace(this.prefixtrace(msg, frame));
 };
 
@@ -84,7 +84,7 @@ Log4jsExt.prototype.trace = function(msg, frame) {
   @param {String} msg Log message.
   @param {Number} frame Optional stacktrace frame
  */
-Log4jsExt.prototype.debug = function(msg, frame) {
+Logger.prototype.debug = function(msg, frame) {
   this.logger.debug(this.prefixtrace(msg, frame));
 };
 
@@ -94,7 +94,7 @@ Log4jsExt.prototype.debug = function(msg, frame) {
   @param {String} msg Log message.
   @param {Number} frame Optional stacktrace frame
  */
-Log4jsExt.prototype.info = function(msg, frame) {
+Logger.prototype.info = function(msg, frame) {
   this.logger.info(this.prefixtrace(msg, frame));
 };
 
@@ -104,7 +104,7 @@ Log4jsExt.prototype.info = function(msg, frame) {
   @param {String} msg Log message.
   @param {Number} frame Optional stacktrace frame
  */
-Log4jsExt.prototype.warn = function(msg, frame) {
+Logger.prototype.warn = function(msg, frame) {
   this.logger.warn(this.prefixtrace(msg, frame));
 };
 
@@ -114,6 +114,6 @@ Log4jsExt.prototype.warn = function(msg, frame) {
   @param {String} msg Log message.
   @param {Number} frame Optional stacktrace frame
  */
-Log4jsExt.prototype.error = function(msg, frame) {
+Logger.prototype.error = function(msg, frame) {
   this.logger.error(this.prefixtrace(msg, frame));
 };

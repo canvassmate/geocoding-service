@@ -12,7 +12,7 @@
 
 const log = config.logger('router');
 
-module.exports.ApiError = ApiError;
+module.exports = ApiError;
 
 function ApiError(status, msg) {
   Error.call(this);

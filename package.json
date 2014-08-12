@@ -6,7 +6,7 @@
   "description": "Geocoding Web Service for Canvassmate",
   "private": true,
   "scripts": {
-    "start": "node --harmony ./bin/www"
+    "start": "NODE_PATH=$NODE_PATH:./app nodemon --harmony ./bin/www"
   },
   "repository": {
     "type": "git",
