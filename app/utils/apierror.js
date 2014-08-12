@@ -1,5 +1,5 @@
 /**
-  error-ext.js
+  apierror.js
   canvassmate-geocodingservice
 
   created by matux (matias.pequeno@gmail.com) on 2014-08-10

@@ -41,9 +41,11 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/Log4js-Ext.html">Log4js-Ext</a></li>
+                <li><a href="../classes/Logger.html">Logger</a></li>
             
-                <li><a href="../classes/Morgan-Ext.html">Morgan-Ext</a></li>
+                <li><a href="../classes/Morgan-Formatter.html">Morgan-Formatter</a></li>
+            
+                <li><a href="../classes/runtime.html">runtime</a></li>
             
             </ul>
 
@@ -101,7 +103,7 @@
   canvassmate-geocodingservice
 
   created by matux (matias.pequeno@gmail.com) on 2014-08-04
-  copyright (c) 2014 canvassmate. all rights reserved.
+  copyright (c) 2014 Canvassmate, Ltd. all rights reserved.
 
   Main app module
   @module app
@@ -109,29 +111,26 @@
  */
 &#x27;use strict&#x27;;
 
-const log = config.logger(&#x27;app&#x27;),
-      express = require(&#x27;express&#x27;),
+const express = require(&#x27;express&#x27;),
       path = require(&#x27;path&#x27;),
       favicon = require(&#x27;serve-favicon&#x27;),
       morgan = require(&#x27;morgan&#x27;),
-      morganext = require(&#x27;./extensions/morgan-ext&#x27;),
       cookieParser = require(&#x27;cookie-parser&#x27;),
       bodyParser = require(&#x27;body-parser&#x27;);
 
-const routes = require(&#x27;./routes/index&#x27;),
-      users = require(&#x27;./routes/users&#x27;);
+const morganFormatter = require(&#x27;utils/morgan-formatter.js&#x27;),
+      routes = require(&#x27;routes/index.js&#x27;),
+      users = require(&#x27;routes/users.js&#x27;);
 
-const publicPath = path.join(__dirname, &#x27;../public&#x27;);
-
-const app = express();
+const app = express(),
+      log = config.logger(&#x27;app&#x27;),
+      publicPath = path.join(__dirname, &#x27;../public&#x27;);
 
 log.info(&#x27;app init&#x27;);
 log.debug(&#x27;env is \x1b[34m&#x27; + config.env.current + &#x27;\x1b[39m&#x27;);
 
 // http logging
-morgan.format(&#x27;custom&#x27;, morganext.format);
-const httpLogger = morgan(&#x27;custom&#x27;);
-app.use(httpLogger);
+app.use(morgan(morganFormatter[&#x27;default&#x27;]));
 
 // view engine setup
 app.set(&#x27;views&#x27;, path.join(__dirname, &#x27;views&#x27;));

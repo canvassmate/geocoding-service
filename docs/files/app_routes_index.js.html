@@ -41,9 +41,11 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/Log4js-Ext.html">Log4js-Ext</a></li>
+                <li><a href="../classes/Logger.html">Logger</a></li>
             
-                <li><a href="../classes/Morgan-Ext.html">Morgan-Ext</a></li>
+                <li><a href="../classes/Morgan-Formatter.html">Morgan-Formatter</a></li>
+            
+                <li><a href="../classes/runtime.html">runtime</a></li>
             
             </ul>
 
@@ -101,7 +103,7 @@
   canvassmate-geocodingservice
 
   created by matux (matias.pequeno@gmail.com) on 2014-08-04
-  copyright (c) 2014 canvassmate. all rights reserved.
+  copyright (c) 2014 Canvassmate, Ltd. all rights reserved.
 
   Index route
   @module app
@@ -109,44 +111,69 @@
  */
 &#x27;use strict&#x27;;
 
-const express = require(&#x27;express&#x27;),
-      runtime = require(&#x27;../config/runtime&#x27;);
-const router = express.Router();
-const log = config.logger(&#x27;router&#x27;);
+const express = require(&#x27;express&#x27;);
+const ApiError = require(&#x27;utils/apierror.js&#x27;);
+const log = config.logger(&#x27;router&#x27;),
+      router = express.Router();
 
 // GET home page.
 router.get(&#x27;/&#x27;, function(req, res) {
-	res.render(&#x27;index&#x27;, { title: &#x27;Canvassmate Geocoding Web Service&#x27; });
+  let dict = {
+    title: &#x27;Canvassmate Geocoding Web Service&#x27;,
+    key: config.keys.google
+  };
+  res.render(&#x27;index&#x27;, dict, function(err, html) {
+    res.send(html);
+  });
 });
+
+function validateCoordinates(lat, lon) {
+  var error;
+
+  if (typeof lat === &#x27;undefined&#x27; || typeof lon === &#x27;undefined&#x27;) {
+    error = new ApiError(422, &#x27;reverse_geocode: missing params.&#x27;);
+  } else if (isNaN(lat) || isNaN(lon)) {
+    error = new ApiError(422, &#x27;reverse_geocode: either lat or lon isNaN.&#x27;);
+  } else if (lat &lt; -90 || lat &gt; 90 || lon &lt; -180 || lon &gt; 180) {
+    error = new ApiError(422, &#x27;reverse_geocode: either lat or lon have invalid values.&#x27;);
+  }
+
+  return error;
+}
 
 // Geocoding
 router.get(&#x27;/geocode&#x27;, function(req, res) {
-  log.error(&#x27;Geocoding not implemented.&#x27;);
-  res.status(501);
+  switch (req.accepts(&#x27;json&#x27;)) {
+    case &#x27;json&#x27;:
+      new ApiError(501, &#x27;Geocoding not implemented.&#x27;).send(res);
+      break;
+    default:
+      new ApiError(406, &#x27;req doesn\&#x27;t accept json.&#x27;).send(res, res.send.bind(res));
+      break;
+  }
 });
 
 // Reverse Geocoding
 router.get(&#x27;/reverse_geocode&#x27;, function(req, res) {
+  runtime.logP(req.headers, &#x27;req.headers&#x27;);
+
   switch (req.accepts(&#x27;json&#x27;)) {
     case &#x27;json&#x27;: {
       const lat = req.query.lat, lon = req.query.lon;
       log.debug(&#x27;lat: &#x27; + lat + &#x27;, lon: &#x27; + lon);
 
-      if (typeof lat === &#x27;undefined&#x27; || typeof lon === &#x27;undefined&#x27;) {
-        log.error(&#x27;reverse_geocode: missing params&#x27;);
-        res.status(422);
-      } else if (isNaN(lat) || isNaN(lon)) {
-        log.error(&#x27;reverse_geocode: either lat or lon isNaN&#x27;);
-        res.status(422);
-      } else {
+      let error = validateCoordinates(lat, lon);
 
-        res.status(200).json({});
+      if (typeof error === &#x27;undefined&#x27;) {
+        res.status(200).json({yay:&#x27;yay&#x27;});
+      } else {
+        error.send(res);
       }
+
       break;
     } 
     default:
-      log.warn(&#x27;req doesn\&#x27;t accept json&#x27;);
-      res.status(406);
+      new ApiError(406, &#x27;req doesn\&#x27;t accept json.&#x27;).send(res.send.bind(res));
       break;
   }
 });

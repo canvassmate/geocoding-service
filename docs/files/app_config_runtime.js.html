@@ -41,9 +41,11 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/Log4js-Ext.html">Log4js-Ext</a></li>
+                <li><a href="../classes/Logger.html">Logger</a></li>
             
-                <li><a href="../classes/Morgan-Ext.html">Morgan-Ext</a></li>
+                <li><a href="../classes/Morgan-Formatter.html">Morgan-Formatter</a></li>
+            
+                <li><a href="../classes/runtime.html">runtime</a></li>
             
             </ul>
 
@@ -109,10 +111,39 @@
  */
 &#x27;use strict&#x27;;
 
+const log = config.logger(&#x27;runtime&#x27;);
+
+/**
+  Runtime utility
+
+  @class runtime
+ */
+
+module.exports.getClassName = getClassName;
+
+/**
+  Adds a function to the base Object prototype that returns the actual name
+  of the receiving class.
+
+  @example
+  &#x60;console.log(runtime.getClassName(obj));&#x60;
+
+  @method getClassName
+  @param {Object} obj Object to get the name from
+  @return {String} Name of the object formatted as [Object Name]
+ */
+function getClassName(obj) {
+   var results = /function (.{1,})\(/.exec(obj.constructor.toString());
+   var hasResults = results &amp;&amp; results.length &gt; 1;
+   return &#x27;[object &#x27; + (hasResults ? results[1] : &#x27;unknown&#x27;) + &#x27;]&#x27;;
+}
+
 /**
   Get the stack as an array of call sites.
+
+  @method getStack
  */
-module.exports.getStack = function getStack() {
+module.exports.getStack = function() {
   var limit = Error.stackTraceLimit;
   var obj = {};
   var prep = Error.prepareStackTrace;
@@ -130,6 +161,25 @@ module.exports.getStack = function getStack() {
   Error.stackTraceLimit = limit;
 
   return stack;
+};
+
+/**
+  Prints all keys (properties) and values of a given Object
+
+  @method getStack
+ */
+module.exports.logP = function(obj, tag, logF) {
+  logF = typeof logf === &#x27;undefined&#x27; ? log.debug.bind(log) : logF;
+  tag = typeof tag !== &#x27;undefined&#x27; ? &#x27; &#x27; + tag + &#x27; &#x27; : &#x27; &#x27;;
+
+  var logmsg = getClassName(obj) + tag + &#x27;\x1B[37m{\n&#x27;;
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      logmsg += &#x27;\t\x1B[37m&#x27; + key + &#x27;: \x1b[90m\&#x27;&#x27; + obj[key] + &#x27;\&#x27;\x1B[39m\n&#x27;;
+    }
+  }
+
+  logF(logmsg + &#x27;}&#x27;, 1);
 };
 
     </pre>

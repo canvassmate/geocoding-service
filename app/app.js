@@ -3,7 +3,7 @@
   canvassmate-geocodingservice
 
   created by matux (matias.pequeno@gmail.com) on 2014-08-04
-  copyright (c) 2014 canvassmate. all rights reserved.
+  copyright (c) 2014 Canvassmate, Ltd. all rights reserved.
 
   Main app module
   @module app
@@ -18,9 +18,9 @@ const express = require('express'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser');
 
-const morganext = require('utils/morgan-ext'),
-      routes = require('routes/index'),
-      users = require('routes/users');
+const morganFormatter = require('utils/morgan-formatter.js'),
+      routes = require('routes/index.js'),
+      users = require('routes/users.js');
 
 const app = express(),
       log = config.logger('app'),
@@ -30,8 +30,7 @@ log.info('app init');
 log.debug('env is \x1b[34m' + config.env.current + '\x1b[39m');
 
 // http logging
-morgan.format('custom', morganext.format);
-app.use(morgan('custom'));
+app.use(morgan(morganFormatter['default']));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

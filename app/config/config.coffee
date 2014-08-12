@@ -2,7 +2,7 @@
 # Main configuration namespace
 # Author: Matias Pequeno
 # Date: Aug 3, 2014
-# Copyright (c) 2014 Canvassmate. All rights reserved.
+# Copyright (c) 2014 Canvassmate, Ltd. All rights reserved.
 
 # Set the current environment to true in the env object
 currentEnv = process.env.NODE_ENV or 'development'

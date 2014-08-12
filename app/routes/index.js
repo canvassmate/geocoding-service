@@ -3,7 +3,7 @@
   canvassmate-geocodingservice
 
   created by matux (matias.pequeno@gmail.com) on 2014-08-04
-  copyright (c) 2014 canvassmate. all rights reserved.
+  copyright (c) 2014 Canvassmate, Ltd. all rights reserved.
 
   Index route
   @module app

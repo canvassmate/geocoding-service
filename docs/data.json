@@ -6,26 +6,8 @@
             "modules": {
                 "config": 1
             },
-            "classes": {},
-            "fors": {},
-            "namespaces": {}
-        },
-        "app/extensions/log4js-ext.js": {
-            "name": "app/extensions/log4js-ext.js",
-            "modules": {
-                "extensions": 1
-            },
             "classes": {
-                "Log4js-Ext": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "app/extensions/morgan-ext.js": {
-            "name": "app/extensions/morgan-ext.js",
-            "modules": {},
-            "classes": {
-                "Morgan-Ext": 1
+                "runtime": 1
             },
             "fors": {},
             "namespaces": {}
@@ -46,6 +28,33 @@
             "fors": {},
             "namespaces": {}
         },
+        "app/utils/apierror.js": {
+            "name": "app/utils/apierror.js",
+            "modules": {
+                "extensions": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/utils/logger.js": {
+            "name": "app/utils/logger.js",
+            "modules": {},
+            "classes": {
+                "Logger": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/utils/morgan-formatter.js": {
+            "name": "app/utils/morgan-formatter.js",
+            "modules": {},
+            "classes": {
+                "Morgan-Formatter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "app/app.js": {
             "name": "app/app.js",
             "modules": {
@@ -61,49 +70,36 @@
             "name": "app",
             "submodules": {
                 "config": 1,
-                "extensions": 1,
-                "routes": 1
+                "routes": 1,
+                "extensions": 1
             },
             "classes": {
-                "Log4js-Ext": 1,
-                "Morgan-Ext": 1
+                "runtime": 1,
+                "Logger": 1,
+                "Morgan-Formatter": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "main",
-            "file": "app/extensions/morgan-ext.js",
+            "file": "app/utils/morgan-formatter.js",
             "line": 17,
-            "description": "app.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 canvassmate. all rights reserved.\n\nMain app module",
+            "description": "app.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Canvassmate, Ltd. all rights reserved.\n\nMain app module",
             "itemtype": "main"
         },
         "config": {
             "name": "config",
             "submodules": {},
-            "classes": {},
+            "classes": {
+                "runtime": 1
+            },
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
             "module": "app",
             "namespace": "",
             "file": "app/config/runtime.js",
-            "line": 1,
+            "line": 16,
             "description": "runtime.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Silicon Illusions. all rights reserved.\n\nIndex route"
-        },
-        "extensions": {
-            "name": "extensions",
-            "submodules": {},
-            "classes": {
-                "Log4js-Ext": 1,
-                "Morgan-Ext": 1
-            },
-            "fors": {},
-            "is_submodule": 1,
-            "namespaces": {},
-            "module": "app",
-            "namespace": "",
-            "file": "app/extensions/morgan-ext.js",
-            "line": 17,
-            "description": "log4js-ext.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-10\ncopyright (c) 2014 canvassmate. all rights reserved."
         },
         "routes": {
             "name": "routes",
@@ -116,13 +112,44 @@
             "namespace": "",
             "file": "app/routes/index.js",
             "line": 1,
-            "description": "index.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 canvassmate. all rights reserved.\n\nIndex route"
+            "description": "index.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Canvassmate, Ltd. all rights reserved.\n\nIndex route"
+        },
+        "extensions": {
+            "name": "extensions",
+            "submodules": {},
+            "classes": {
+                "Logger": 1,
+                "Morgan-Formatter": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "app",
+            "namespace": "",
+            "file": "app/utils/morgan-formatter.js",
+            "line": 17,
+            "description": "apierror.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-10\ncopyright (c) 2014 Canvassmate, Ltd. all rights reserved."
         }
     },
     "classes": {
-        "Log4js-Ext": {
-            "name": "Log4js-Ext",
-            "shortname": "Log4js-Ext",
+        "runtime": {
+            "name": "runtime",
+            "shortname": "runtime",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "app",
+            "submodule": "config",
+            "namespace": "",
+            "file": "app/config/runtime.js",
+            "line": 16,
+            "description": "Runtime utility"
+        },
+        "Logger": {
+            "name": "Logger",
+            "shortname": "Logger",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -131,8 +158,8 @@
             "module": "app",
             "submodule": "extensions",
             "namespace": "",
-            "file": "app/extensions/log4js-ext.js",
-            "line": 21,
+            "file": "app/utils/logger.js",
+            "line": 22,
             "description": "A utility that wraps around log4js and extends its functionality without changing its usage.",
             "params": [
                 {
@@ -149,9 +176,9 @@
             "is_constructor": 1,
             "static": 1
         },
-        "Morgan-Ext": {
-            "name": "Morgan-Ext",
-            "shortname": "Morgan-Ext",
+        "Morgan-Formatter": {
+            "name": "Morgan-Formatter",
+            "shortname": "Morgan-Formatter",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -160,23 +187,59 @@
             "module": "app",
             "submodule": "extensions",
             "namespace": "",
-            "file": "app/extensions/morgan-ext.js",
+            "file": "app/utils/morgan-formatter.js",
             "line": 17,
-            "description": "Custom format function inspired on morgan's dev"
+            "description": "Custom format functions for morgan"
         }
     },
     "classitems": [
         {
             "file": "app/config/runtime.js",
-            "line": 14,
-            "description": "Get the stack as an array of call sites.",
-            "class": "Log4js-Ext",
+            "line": 24,
+            "description": "Adds a function to the base Object prototype that returns the actual name\nof the receiving class.",
+            "example": [
+                "\n`console.log(runtime.getClassName(obj));`"
+            ],
+            "itemtype": "method",
+            "name": "getClassName",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Object to get the name from",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Name of the object formatted as [Object Name]",
+                "type": "String"
+            },
+            "class": "runtime",
             "module": "app",
             "submodule": "config"
         },
         {
-            "file": "app/extensions/log4js-ext.js",
-            "line": 45,
+            "file": "app/config/runtime.js",
+            "line": 41,
+            "description": "Get the stack as an array of call sites.",
+            "itemtype": "method",
+            "name": "getStack",
+            "class": "runtime",
+            "module": "app",
+            "submodule": "config"
+        },
+        {
+            "file": "app/config/runtime.js",
+            "line": 66,
+            "description": "Prints all keys (properties) and values of a given Object",
+            "itemtype": "method",
+            "name": "getStack",
+            "class": "runtime",
+            "module": "app",
+            "submodule": "config"
+        },
+        {
+            "file": "app/utils/logger.js",
+            "line": 46,
             "description": "Prefixes the current stacktrace frame to the provided message.",
             "itemtype": "method",
             "name": "prefixtrace",
@@ -185,19 +248,24 @@
                     "name": "msg",
                     "description": "Message to which the frame will be prefixed.",
                     "type": "String"
+                },
+                {
+                    "name": "frame",
+                    "description": "Optional stacktrace frame",
+                    "type": "Number"
                 }
             ],
             "return": {
                 "description": "Original message prefixed with current stacktrace frame.",
                 "type": "String"
             },
-            "class": "Log4js-Ext",
+            "class": "Logger",
             "module": "app",
             "submodule": "extensions"
         },
         {
-            "file": "app/extensions/log4js-ext.js",
-            "line": 69,
+            "file": "app/utils/logger.js",
+            "line": 72,
             "description": "Wraps around log4js' method of the same name.",
             "itemtype": "method",
             "name": "trace",
@@ -206,15 +274,20 @@
                     "name": "msg",
                     "description": "Log message.",
                     "type": "String"
+                },
+                {
+                    "name": "frame",
+                    "description": "Optional stacktrace frame",
+                    "type": "Number"
                 }
             ],
-            "class": "Log4js-Ext",
+            "class": "Logger",
             "module": "app",
             "submodule": "extensions"
         },
         {
-            "file": "app/extensions/log4js-ext.js",
-            "line": 78,
+            "file": "app/utils/logger.js",
+            "line": 82,
             "description": "Wraps around log4js' method of the same name.",
             "itemtype": "method",
             "name": "debug",
@@ -223,15 +296,20 @@
                     "name": "msg",
                     "description": "Log message.",
                     "type": "String"
+                },
+                {
+                    "name": "frame",
+                    "description": "Optional stacktrace frame",
+                    "type": "Number"
                 }
             ],
-            "class": "Log4js-Ext",
+            "class": "Logger",
             "module": "app",
             "submodule": "extensions"
         },
         {
-            "file": "app/extensions/log4js-ext.js",
-            "line": 87,
+            "file": "app/utils/logger.js",
+            "line": 92,
             "description": "Wraps around log4js' method of the same name.",
             "itemtype": "method",
             "name": "info",
@@ -240,15 +318,20 @@
                     "name": "msg",
                     "description": "Log message.",
                     "type": "String"
+                },
+                {
+                    "name": "frame",
+                    "description": "Optional stacktrace frame",
+                    "type": "Number"
                 }
             ],
-            "class": "Log4js-Ext",
+            "class": "Logger",
             "module": "app",
             "submodule": "extensions"
         },
         {
-            "file": "app/extensions/log4js-ext.js",
-            "line": 96,
+            "file": "app/utils/logger.js",
+            "line": 102,
             "description": "Wraps around log4js' method of the same name.",
             "itemtype": "method",
             "name": "warn",
@@ -257,15 +340,20 @@
                     "name": "msg",
                     "description": "Log message.",
                     "type": "String"
+                },
+                {
+                    "name": "frame",
+                    "description": "Optional stacktrace frame",
+                    "type": "Number"
                 }
             ],
-            "class": "Log4js-Ext",
+            "class": "Logger",
             "module": "app",
             "submodule": "extensions"
         },
         {
-            "file": "app/extensions/log4js-ext.js",
-            "line": 105,
+            "file": "app/utils/logger.js",
+            "line": 112,
             "description": "Wraps around log4js' method of the same name.",
             "itemtype": "method",
             "name": "error",
@@ -274,16 +362,21 @@
                     "name": "msg",
                     "description": "Log message.",
                     "type": "String"
+                },
+                {
+                    "name": "frame",
+                    "description": "Optional stacktrace frame",
+                    "type": "Number"
                 }
             ],
-            "class": "Log4js-Ext",
+            "class": "Logger",
             "module": "app",
             "submodule": "extensions"
         },
         {
-            "file": "app/extensions/morgan-ext.js",
+            "file": "app/utils/morgan-formatter.js",
             "line": 23,
-            "description": "Custom format function inspired on morgan's dev",
+            "description": "Custom format function inspired on morgan's 'dev'",
             "itemtype": "method",
             "name": "format",
             "params": [
@@ -309,15 +402,10 @@
             },
             "access": "public",
             "tagname": "",
-            "class": "Morgan-Ext",
+            "class": "Morgan-Formatter",
             "module": "app",
             "submodule": "extensions"
         }
     ],
-    "warnings": [
-        {
-            "message": "Missing item type\nGet the stack as an array of call sites.",
-            "line": " app/config/runtime.js:14"
-        }
-    ]
+    "warnings": []
 }

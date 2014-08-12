@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Log4js-Ext</title>
+    <title>Logger</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -41,9 +41,11 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/Log4js-Ext.html">Log4js-Ext</a></li>
+                <li><a href="../classes/Logger.html">Logger</a></li>
             
-                <li><a href="../classes/Morgan-Ext.html">Morgan-Ext</a></li>
+                <li><a href="../classes/Morgan-Formatter.html">Morgan-Formatter</a></li>
+            
+                <li><a href="../classes/runtime.html">runtime</a></li>
             
             </ul>
 
@@ -92,7 +94,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Log4js-Ext Class</h1>
+                        <h1>Logger Class</h1>
 <div class="box meta">
     
 
@@ -100,7 +102,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/app_extensions_log4js-ext.js.html#l21"><code>app&#x2F;extensions&#x2F;log4js-ext.js:21</code></a>
+            Defined in: <a href="../files/app_utils_logger.js.html#l22"><code>app&#x2F;utils&#x2F;logger.js:22</code></a>
         </div>
     
 
@@ -124,8 +126,8 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Log4js-Ext" class="method item">
-    <h3 class="name"><code>Log4js-Ext</code></h3>
+        <div id="method_Logger" class="method item">
+    <h3 class="name"><code>Logger</code></h3>
 
     
         <div class="args">
@@ -174,7 +176,7 @@
             
         
         
-        <a href="../files/app_extensions_log4js-ext.js.html#l21"><code>app&#x2F;extensions&#x2F;log4js-ext.js:21</code></a>
+        <a href="../files/app_utils_logger.js.html#l22"><code>app&#x2F;utils&#x2F;logger.js:22</code></a>
         
         </p>
 
@@ -331,6 +333,12 @@
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>frame</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -360,7 +368,7 @@
             
         
         
-        <a href="../files/app_extensions_log4js-ext.js.html#l78"><code>app&#x2F;extensions&#x2F;log4js-ext.js:78</code></a>
+        <a href="../files/app_utils_logger.js.html#l82"><code>app&#x2F;utils&#x2F;logger.js:82</code></a>
         
         </p>
 
@@ -391,6 +399,22 @@
 
                     <div class="param-description">
                         <p>Log message.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">frame</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Optional stacktrace frame</p>
 
                     </div>
 
@@ -420,6 +444,12 @@
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>frame</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -449,7 +479,7 @@
             
         
         
-        <a href="../files/app_extensions_log4js-ext.js.html#l105"><code>app&#x2F;extensions&#x2F;log4js-ext.js:105</code></a>
+        <a href="../files/app_utils_logger.js.html#l112"><code>app&#x2F;utils&#x2F;logger.js:112</code></a>
         
         </p>
 
@@ -480,6 +510,22 @@
 
                     <div class="param-description">
                         <p>Log message.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">frame</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Optional stacktrace frame</p>
 
                     </div>
 
@@ -509,6 +555,12 @@
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>frame</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -538,7 +590,7 @@
             
         
         
-        <a href="../files/app_extensions_log4js-ext.js.html#l87"><code>app&#x2F;extensions&#x2F;log4js-ext.js:87</code></a>
+        <a href="../files/app_utils_logger.js.html#l92"><code>app&#x2F;utils&#x2F;logger.js:92</code></a>
         
         </p>
 
@@ -575,6 +627,22 @@
                     
                 </li>
             
+                <li class="param">
+                    
+                        <code class="param-name">frame</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Optional stacktrace frame</p>
+
+                    </div>
+
+                    
+                </li>
+            
             </ul>
         </div>
     
@@ -595,6 +663,12 @@
                 <li class="arg">
                     
                         <code>msg</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>frame</code>
                     
                 </li>
             
@@ -631,7 +705,7 @@
             
         
         
-        <a href="../files/app_extensions_log4js-ext.js.html#l45"><code>app&#x2F;extensions&#x2F;log4js-ext.js:45</code></a>
+        <a href="../files/app_utils_logger.js.html#l46"><code>app&#x2F;utils&#x2F;logger.js:46</code></a>
         
         </p>
 
@@ -662,6 +736,22 @@
 
                     <div class="param-description">
                         <p>Message to which the frame will be prefixed.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">frame</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Optional stacktrace frame</p>
 
                     </div>
 
@@ -705,6 +795,12 @@
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>frame</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -734,7 +830,7 @@
             
         
         
-        <a href="../files/app_extensions_log4js-ext.js.html#l69"><code>app&#x2F;extensions&#x2F;log4js-ext.js:69</code></a>
+        <a href="../files/app_utils_logger.js.html#l72"><code>app&#x2F;utils&#x2F;logger.js:72</code></a>
         
         </p>
 
@@ -771,6 +867,22 @@
                     
                 </li>
             
+                <li class="param">
+                    
+                        <code class="param-name">frame</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Optional stacktrace frame</p>
+
+                    </div>
+
+                    
+                </li>
+            
             </ul>
         </div>
     
@@ -791,6 +903,12 @@
                 <li class="arg">
                     
                         <code>msg</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>frame</code>
                     
                 </li>
             
@@ -823,7 +941,7 @@
             
         
         
-        <a href="../files/app_extensions_log4js-ext.js.html#l96"><code>app&#x2F;extensions&#x2F;log4js-ext.js:96</code></a>
+        <a href="../files/app_utils_logger.js.html#l102"><code>app&#x2F;utils&#x2F;logger.js:102</code></a>
         
         </p>
 
@@ -854,6 +972,22 @@
 
                     <div class="param-description">
                         <p>Log message.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">frame</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Optional stacktrace frame</p>
 
                     </div>
 

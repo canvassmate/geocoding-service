@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app/extensions/morgan-ext.js</title>
+    <title>app/utils/apierror.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -41,9 +41,11 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/Log4js-Ext.html">Log4js-Ext</a></li>
+                <li><a href="../classes/Logger.html">Logger</a></li>
             
-                <li><a href="../classes/Morgan-Ext.html">Morgan-Ext</a></li>
+                <li><a href="../classes/Morgan-Formatter.html">Morgan-Formatter</a></li>
+            
+                <li><a href="../classes/runtime.html">runtime</a></li>
             
             </ul>
 
@@ -92,59 +94,54 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: app/extensions/morgan-ext.js</h1>
+                        <h1 class="file-heading">File: app/utils/apierror.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
-  morgan-ext.js
+  apierror.js
   canvassmate-geocodingservice
 
-  created by matux (matias.pequeno@gmail.com) on 2014-08-04
-  copyright (c) 2014 Silicon Illusions. all rights reserved.
+  created by matux (matias.pequeno@gmail.com) on 2014-08-10
+  copyright (c) 2014 Canvassmate, Ltd. all rights reserved.
 
-  Configuration and utility
   @module app
   @submodule extensions
  */
 &#x27;use strict&#x27;;
 
-const moment = require(&#x27;moment&#x27;),
-      bytes = require(&#x27;bytes&#x27;);
+const log = config.logger(&#x27;router&#x27;);
 
-/**
-  Custom format function inspired on morgan&#x27;s dev
+module.exports = ApiError;
 
-  @class Morgan-Ext
- */
+function ApiError(status, msg) {
+  Error.call(this);
+  Error.prepareStackTrace = function(err, stack) { return stack; };
+  Error.captureStackTrace(this); //, arguments.callee);
 
-/**
-  Custom format function inspired on morgan&#x27;s dev
+  this.message = msg;
+  this.name = runtime.getClassName(this);
+  this.code = status;
 
-  @method format
-  @param {String} tokens
-  @param {Object} req
-  @param {Object} res
-  @return {String} log string
-  @public
- */
-module.exports.format = function(tokens, req, res) {
-  const status = res.statusCode;
-  const color = status &gt;= 500 ? 31 :
-                status &gt;= 400 ? 33 :
-                status &gt;= 300 ? 36 : 32;
+  log.error(this, 1);
+}
 
-  var len = parseInt(res.getHeader(&#x27;Content-Length&#x27;), 10);
-  len = isNaN(len) ? &#x27;&#x27; : &#x27; - &#x27; + bytes(len);
+ApiError.prototype = Object.create(Error.prototype);
+ApiError.prototype.constructor = ApiError;
 
-  return &#x27;\x1b[90m&#x27; + &#x27;[&#x27; + moment().format(&#x27;HH:mm:ss.SSS&#x27;) + &#x27;] &#x27; +
-    &#x27;\x1b[1m\x1b[90m&#x27; + req.method + &#x27;\x1b[22m&#x27; +
-    &#x27; &#x27; + (req.originalUrl || req.url) + &#x27; &#x27; +
-    &#x27;\x1b[&#x27; + color + &#x27;m&#x27; + status +
-    &#x27; \x1b[90m&#x27; +
-    (new Date() - req._startTime) +
-    &#x27;ms&#x27; + len +
-    &#x27;\x1b[0m&#x27;;
+ApiError.prototype.send = function(res, method) {
+  if (typeof method === &#x27;undefined&#x27;) {
+    method = res.json.bind(res);
+  }
+
+  res.status(this.code);
+  method({ error: this.message});
+
+  return this;
+};
+
+ApiError.prototype.toString = function() {
+  return this.name + &#x27;: (&#x27; + this.code + &#x27;) &#x27; + this.message;
 };
 
     </pre>

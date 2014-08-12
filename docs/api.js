@@ -1,8 +1,9 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
-        "Log4js-Ext",
-        "Morgan-Ext"
+        "Logger",
+        "Morgan-Formatter",
+        "runtime"
     ],
     "modules": [
         "app",
@@ -14,7 +15,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "app",
             "name": "app",
-            "description": "app.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 canvassmate. all rights reserved.\n\nMain app module"
+            "description": "app.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Canvassmate, Ltd. all rights reserved.\n\nMain app module"
         },
         {
             "displayName": "config",
@@ -24,12 +25,12 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "extensions",
             "name": "extensions",
-            "description": "log4js-ext.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-10\ncopyright (c) 2014 canvassmate. all rights reserved."
+            "description": "apierror.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-10\ncopyright (c) 2014 Canvassmate, Ltd. all rights reserved."
         },
         {
             "displayName": "routes",
             "name": "routes",
-            "description": "index.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 canvassmate. all rights reserved.\n\nIndex route"
+            "description": "index.js\ncanvassmate-geocodingservice\n\ncreated by matux (matias.pequeno@gmail.com) on 2014-08-04\ncopyright (c) 2014 Canvassmate, Ltd. all rights reserved.\n\nIndex route"
         }
     ]
 } };

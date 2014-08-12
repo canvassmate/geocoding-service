@@ -1,10 +1,11 @@
 /**
-  log4js-ext.js
+  logger.js
   canvassmate-geocodingservice
 
   created by matux (matias.pequeno@gmail.com) on 2014-08-10
-  copyright (c) 2014 canvassmate. all rights reserved.
+  copyright (c) 2014 Canvassmate, Ltd. all rights reserved.
 
+  Logging utility
   @module app
   @submodule extensions
  */
@@ -21,7 +22,7 @@ module.exports = function(tag, lvl) {
 /**
   A utility that wraps around log4js and extends its functionality without changing its usage.
 
-  @class Log4js-Ext
+  @class Logger
   @param {String} tag='default' An optional tag to describe this Logger
   @param {String} lvl='ALL' An optional Logging level (`TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `ALL`)
   @constructor

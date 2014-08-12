@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app</title>
+    <title>app/utils/morgan-formatter.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -94,118 +94,62 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>app Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: app/utils/morgan-formatter.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+  morgan-formatter.js
+  canvassmate-geocodingservice
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/app_utils_morgan-formatter.js.html#l17"><code>app&#x2F;utils&#x2F;morgan-formatter.js:17</code></a>
-        </div>
-    
+  created by matux (matias.pequeno@gmail.com) on 2014-08-04
+  copyright (c) 2014 Canvassmate, Ltd. all rights reserved.
 
-    
-</div>
+  Configuration and utility
+  @module app
+  @submodule extensions
+ */
+&#x27;use strict&#x27;;
 
+const moment = require(&#x27;moment&#x27;),
+      bytes = require(&#x27;bytes&#x27;);
 
+/**
+  Custom format functions for morgan
 
-<div class="box intro">
-    <p>app.js
-canvassmate-geocodingservice</p>
-<p>created by matux (matias.pequeno@gmail.com) on 2014-08-04
-copyright (c) 2014 Canvassmate, Ltd. all rights reserved.</p>
-<p>Main app module</p>
+  @class Morgan-Formatter
+ */
 
-</div>
+/**
+  Custom format function inspired on morgan&#x27;s &#x27;dev&#x27;
 
+  @method format
+  @param {String} tokens
+  @param {Object} req
+  @param {Object} res
+  @return {String} log string
+  @public
+ */
+module.exports[&#x27;default&#x27;] = function(tokens, req, res) {
+  const status = res.statusCode;
+  const color = status &gt;= 500 ? 31 :
+                status &gt;= 400 ? 33 :
+                status &gt;= 300 ? 36 : 32;
 
+  var len = parseInt(res.getHeader(&#x27;Content-Length&#x27;), 10);
+  len = isNaN(len) ? &#x27;&#x27; : &#x27; - &#x27; + bytes(len);
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
+  return &#x27;\x1b[90m&#x27; + &#x27;[&#x27; + moment().format(&#x27;HH:mm:ss.SSS&#x27;) + &#x27;] &#x27; +
+    &#x27;\x1b[1m\x1b[90m&#x27; + req.method + &#x27;\x1b[22m&#x27; +
+    &#x27; &#x27; + (req.originalUrl || req.url) + &#x27; &#x27; +
+    &#x27;\x1b[&#x27; + color + &#x27;m&#x27; + status +
+    &#x27; \x1b[90m&#x27; +
+    (new Date() - req._startTime) +
+    &#x27;ms&#x27; + len +
+    &#x27;\x1b[0m&#x27;;
+};
 
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/Logger.html">
-                        Logger
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/Morgan-Formatter.html">
-                        Morgan-Formatter
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/runtime.html">
-                        runtime
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
-
-    <div class="yui3-u-1-2">
-        
-            <p>This module is a rollup of the following modules:</p>
-
-            <ul class="module-submodules">
-            
-                <li class="module-submodule">
-                    <a href="../modules/config.html">
-                        config
-                    </a>
-
-                    <div class="module-submodule-description">
-                        runtime.js
-canvassmate-geocodingservice
-
-created by matux (matias.pequeno@gmail.com) on 2014-08-04
-copyright (c) 2014 Silicon Illusions. all rights reserved.
-
-Index route
-                    </div>
-                </li>
-            
-                <li class="module-submodule">
-                    <a href="../modules/extensions.html">
-                        extensions
-                    </a>
-
-                    <div class="module-submodule-description">
-                        apierror.js
-canvassmate-geocodingservice
-
-created by matux (matias.pequeno@gmail.com) on 2014-08-10
-copyright (c) 2014 Canvassmate, Ltd. all rights reserved.
-                    </div>
-                </li>
-            
-                <li class="module-submodule">
-                    <a href="../modules/routes.html">
-                        routes
-                    </a>
-
-                    <div class="module-submodule-description">
-                        index.js
-canvassmate-geocodingservice
-
-created by matux (matias.pequeno@gmail.com) on 2014-08-04
-copyright (c) 2014 Canvassmate, Ltd. all rights reserved.
-
-Index route
-                    </div>
-                </li>
-            
-            </ul>
-        
-    </div>
+    </pre>
 </div>
 
                     </div>
