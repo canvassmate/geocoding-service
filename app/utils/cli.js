@@ -42,10 +42,11 @@ module.exports.clstr = function(str, style) {
   }
 
   var colorized = '';
-  for (let j = 0; j < 1; ++j) {
-    for (let i = 1; i < arguments.length; ++i) 
+  for (let j = 0; j < 2; ++j) {
+    for (let i = 1; i < arguments.length; ++i)
       colorized += esc(j, arguments[i]);
-    colorized += str;
+    colorized += !j?str:'';
   }
+
   return colorized;
 };
