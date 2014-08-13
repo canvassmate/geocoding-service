@@ -11,7 +11,8 @@
  */
 'use strict';
 
-const isdef = require('utils/runtime.js').isdef;
+const clstr = require('utils/cli.js').clstr;
+const log = config.logger('router');
 
 /**
   Routes
@@ -26,6 +27,7 @@ module.exports.setup = function(router) {
   if (typeof router === 'undefined') {
     router = require('express').Router();
   }
+  log.info('configuring routes');
   configure(router, '/', require('controllers/welcome.js'));
   configure(router, '/geocode', require('controllers/geocoder.js'));
   configure(router, '/reverse_geocode', require('controllers/reverse-geocoder.js'));
@@ -39,8 +41,27 @@ module.exports.setup = function(router) {
   @param {Object} controller
  */
 function configure(router, path, controller) {
-  if (isdef(controller.get)) router.get(path, controller.get);
-  if (isdef(controller.post))router.post(path, controller.post);
-  if (isdef(controller.put)) router.put(path, controller.path);
-  if (isdef(controller.del)) router.del(path, controller.del);
+  function logr(method) {
+    log.trace(clstr(method, 'bold') + clstr(' \'' + path + '\' ', 'grey') + clstr(controller.name(), 'blue'));
+  }
+
+  if (typeof controller.get !== 'undefined') {
+    router.get(path, controller.get);
+    logr('GET');
+  }
+
+  if (typeof controller.post !== 'undefined') {
+    router.post(path, controller.post);
+    logr('POST');
+  }
+
+  if (typeof controller.put !== 'undefined') {
+    router.put(path, controller.path);
+    logr('PUT');
+  }
+
+  if (typeof controller.del !== 'undefined') {
+    router.del(path, controller.del);
+    logr('DELETE');
+  }
 }

@@ -7,7 +7,7 @@
 
   Logging utility
   @module app
-  @submodule extensions
+  @submodule utils
  */
 'use strict';
 

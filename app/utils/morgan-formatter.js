@@ -12,7 +12,8 @@
 'use strict';
 
 const moment = require('moment'),
-      bytes = require('bytes');
+      bytes = require('bytes'),
+      clstr = require('utils/cli.js').clstr;
 
 /**
   Custom format functions for morgan
@@ -32,19 +33,16 @@ const moment = require('moment'),
  */
 module.exports['default'] = function(tokens, req, res) {
   const status = res.statusCode;
-  const color = status >= 500 ? 31 :
-                status >= 400 ? 33 :
-                status >= 300 ? 36 : 32;
+  const color = status >= 500 ? 'red' :
+                status >= 400 ? 'yellow' :
+                status >= 300 ? 'cyan' : 'green';
 
   var len = parseInt(res.getHeader('Content-Length'), 10);
   len = isNaN(len) ? '' : ' - ' + bytes(len);
 
-  return '\x1b[90m' + '[' + moment().format('HH:mm:ss.SSS') + '] ' +
-    '\x1b[1m\x1b[90m' + req.method + '\x1b[22m' +
-    ' ' + (req.originalUrl || req.url) + ' ' +
-    '\x1b[' + color + 'm' + status +
-    ' \x1b[90m' +
-    (new Date() - req._startTime) +
-    'ms' + len +
-    '\x1b[0m';
+  return clstr('[' + moment().format('HH:mm:ss.SSS') + '] ', 'grey') +
+    clstr(clstr(req.method, 'grey'), 'bold') +
+    clstr(' ' + (req.originalUrl || req.url) + ' ', 'grey') +
+    clstr(status + ' ', color) +
+    clstr((new Date() - req._startTime) + 'ms' + len, 'grey');
 };

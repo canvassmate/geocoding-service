@@ -12,11 +12,16 @@
 'use strict';
 
 const ApiError = require('utils/apierror.js');
+const path = require('path');
 
 /**
   Geocoding controller class
   @class Geocoder
  */
+
+module.exports.name = function() {
+  return path.basename(__filename, '.js');
+};
 
 module.exports.get = function(req, res) {
   switch (req.accepts('json')) {

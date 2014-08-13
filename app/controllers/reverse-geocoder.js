@@ -12,7 +12,8 @@
 'use strict';
 
 const ApiError = require('utils/apierror.js'),
-      geo = require('utils/geo.js');
+      geo = require('utils/geo.js'),
+      path = require('path');
 
 const log = config.logger('router');
 
@@ -20,6 +21,10 @@ const log = config.logger('router');
   Reverse Geocoding controller class
   @class Reverse Geocoder
  */
+
+module.exports.name = function() {
+  return path.basename(__filename, '.js');
+};
 
 module.exports.get = function(req, res) {
   runtime.logP(req.headers, 'req.headers');

@@ -11,10 +11,16 @@
  */
 'use strict';
 
+const path = require('path');
+
 /**
   Welcome controller class
   @class Welcome
  */
+
+module.exports.name = function() {
+  return path.basename(__filename, '.js');
+};
 
 module.exports.get = function(req, res) {
   let dict = {
