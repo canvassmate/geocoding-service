@@ -13,11 +13,17 @@
 require('coffee-script/register');
 GLOBAL.config = require('config/config.coffee');
 GLOBAL.runtime = require('config/runtime.js');
-var log = config.logger('www');
-var app = require('app.js');
+const log = config.logger('www');
+const app = require('app.js');
 
 app.set('port', config.server.port);
 
-var server = app.listen(app.get('port'), function() {
-  log.info('listening to port \x1b[34m' + server.address().port + '\x1b[39m');
-});
+const startServer = module.exports = function() {
+  const server = app.listen(app.get('port'), function() {
+    log.info('listening to port \x1b[34m' + server.address().port + '\x1b[39m');
+  });
+};
+
+if (require.main === module) {
+  startServer();
+}
