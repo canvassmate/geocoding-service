@@ -12,7 +12,7 @@
   "boss": true,
   "eqnull": true,
   // style
-  "curly": true,
+  "curly": false,
   "indent": 2,
   "newcap": true, //requires capitalization of names of constructor functions
   "quotmark": "single",

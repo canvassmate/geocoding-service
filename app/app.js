@@ -2,7 +2,7 @@
   app.js
   canvassmate-geocodingservice
 
-  created by matux (matias.pequeno@gmail.com) on 2014-08-04
+  created by matux <matias.pequeno@gmail.com> on 2014-08-04
   copyright (c) 2014 Canvassmate, Ltd. all rights reserved.
 
   Main app module
@@ -19,8 +19,7 @@ const express = require('express'),
       bodyParser = require('body-parser');
 
 const morganFormatter = require('utils/morgan-formatter.js'),
-      routes = require('routes/index.js'),
-      users = require('routes/users.js');
+      routes = require('routes.js');
 
 const app = express(),
       log = config.logger('app'),
@@ -44,8 +43,7 @@ app.use(cookieParser());
 app.use(express.static(publicPath));
 
 // routes
-app.use('/', routes);
-app.use('/users', users);
+routes.setup(app);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -81,3 +81,23 @@ module.exports.logP = function(obj, tag, logF) {
 
   logF(logmsg + '}', 1);
 };
+
+/**
+  Checks if func is defined
+  @method isdef
+  @param {Function} func
+  @return {Boolean} true if is defined
+ */
+module.exports.isdef = function(f) {
+  return typeof f !== 'undefined';
+};
+
+/**
+  Checks if func is undefined
+  @method isndef
+  @param {Function} func
+  @return {Boolean} true if is undefined
+ */
+module.exports.isndef = function(f) {
+  return typeof f === 'undefined';
+};
