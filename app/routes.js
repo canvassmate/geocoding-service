@@ -21,15 +21,11 @@ const log = config.logger('router');
 
 /**
   Set up routes
+  @param {Application} app Your application.
   @method setup
  */
 module.exports.setup = function(router) {
-  if (typeof router === 'undefined') {
-    router = require('express').Router();
-  }
-
   log.info('configuring routes');
-
   configure(router, '/', require('controllers/welcome.js'));
   configure(router, '/geocode', require('controllers/geocoder.js'));
   configure(router, '/reverse_geocode', require('controllers/reverse-geocoder.js'));
