@@ -28,9 +28,24 @@ const styles = {
 
   @method clstr
   @param {String} str String to colorize.
-  @param {String} style Style in string format.
+  @param {String} style Style in string format, accumulative.
   @return {String} colorized string.
  */
 module.exports.clstr = function(str, style) {
-  return '\x1B[' + styles[style][0] + 'm' + str + '\x1B[' + styles[style][1] + 'm';
+  function esc(i, st) {
+    return '\x1B[' + styles[st||style][i] + 'm';
+  }
+
+  // Quick route out if we don't have accumulative styles
+  if (arguments.length === 2) {
+    return esc(0) + str + esc(1);
+  }
+
+  var colorized = '';
+  for (let j = 0; j < 1; ++j) {
+    for (let i = 1; i < arguments.length; ++i) 
+      colorized += esc(j, arguments[i]);
+    colorized += str;
+  }
+  return colorized;
 };

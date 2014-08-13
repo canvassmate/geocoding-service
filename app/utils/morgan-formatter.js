@@ -32,8 +32,8 @@ const moment = require('moment'),
   @public
  */
 module.exports['default'] = function(tokens, req, res) {
-  const status = res.statusCode;
-  const color = status >= 500 ? 'red' :
+  const status = res.statusCode,
+        color = status >= 500 ? 'red' :
                 status >= 400 ? 'yellow' :
                 status >= 300 ? 'cyan' : 'green';
 
@@ -41,7 +41,7 @@ module.exports['default'] = function(tokens, req, res) {
   len = isNaN(len) ? '' : ' - ' + bytes(len);
 
   return clstr('[' + moment().format('HH:mm:ss.SSS') + '] ', 'grey') +
-    clstr(clstr(req.method, 'grey'), 'bold') +
+    clstr(req.method, 'grey', 'bold') +
     clstr(' ' + (req.originalUrl || req.url) + ' ', 'grey') +
     clstr(status + ' ', color) +
     clstr((new Date() - req._startTime) + 'ms' + len, 'grey');

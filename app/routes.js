@@ -27,7 +27,9 @@ module.exports.setup = function(router) {
   if (typeof router === 'undefined') {
     router = require('express').Router();
   }
+
   log.info('configuring routes');
+
   configure(router, '/', require('controllers/welcome.js'));
   configure(router, '/geocode', require('controllers/geocoder.js'));
   configure(router, '/reverse_geocode', require('controllers/reverse-geocoder.js'));
@@ -41,27 +43,27 @@ module.exports.setup = function(router) {
   @param {Object} controller
  */
 function configure(router, path, controller) {
-  function logr(method) {
+  function logroute(method) {
     log.trace(clstr(method, 'bold') + clstr(' \'' + path + '\' ', 'grey') + clstr(controller.name(), 'blue'));
   }
 
   if (typeof controller.get !== 'undefined') {
     router.get(path, controller.get);
-    logr('GET');
+    logroute('GET');
   }
 
   if (typeof controller.post !== 'undefined') {
     router.post(path, controller.post);
-    logr('POST');
+    logroute('POST');
   }
 
   if (typeof controller.put !== 'undefined') {
     router.put(path, controller.path);
-    logr('PUT');
+    logroute('PUT');
   }
 
   if (typeof controller.del !== 'undefined') {
     router.del(path, controller.del);
-    logr('DELETE');
+    logroute('DELETE');
   }
 }
