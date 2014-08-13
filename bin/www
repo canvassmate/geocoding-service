@@ -11,8 +11,8 @@
 'use strict';
 
 require('coffee-script/register');
-GLOBAL.config = require('config/config.coffee');
 GLOBAL.runtime = require('config/runtime.js');
+GLOBAL.config = require('config.coffee');
 const log = config.logger('www');
 const app = require('app.js');
 
