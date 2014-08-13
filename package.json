@@ -4,13 +4,19 @@
   "version": "0.0.1",
   "author": "Matias Pequeno <matias.pequeno@gmail.com>",
   "description": "Geocoding Web Service for Canvassmate",
+  "homepage": "http://www.canvassmate.com",
+  "main": "app.js",
   "private": true,
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_PATH=$NODE_PATH:./app nodemon --harmony ./bin/www"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/canvassmate/geocoding-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/canvassmate/geocoding-service/issues"
   },
   "dependencies": {
     "body-parser": "1.0.x",
