@@ -12,15 +12,16 @@
 
 require('coffee-script/register');
 GLOBAL.config = require('config.coffee');
-GLOBAL.runtime = require('utils/runtime.js');
-const log = config.logger('www');
-const app = require('app.js');
+GLOBAL.rt = require('utils/runtime.js');
+const log = config.logger('www'),
+      app = require('app.js'),
+      clstr = require('utils/cli.js').clstr;
 
 app.set('port', config.server.port);
 
 const startServer = module.exports = function() {
   const server = app.listen(app.get('port'), function() {
-    log.info('listening to port \x1b[34m' + server.address().port + '\x1b[39m');
+    log.info('listening to port ' + clstr(server.address().port, 'blue'));
   });
 };
 

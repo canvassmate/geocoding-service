@@ -11,8 +11,8 @@
  */
 'use strict';
 
-const clstr = require('utils/cli.js').clstr;
-const log = config.logger('router');
+const clstr = require('utils/cli.js').clstr,
+      log = config.logger('router');
 
 /**
   Routes

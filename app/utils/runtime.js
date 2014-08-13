@@ -3,7 +3,7 @@
   canvassmate-geocodingservice
 
   created by matux (matias.pequeno@gmail.com) on 2014-08-04
-  copyright (c) 2014 Silicon Illusions. all rights reserved.
+  copyright (c) 2014 Canvassmate, Ltd. all rights reserved.
 
   Index route
   @module app
@@ -11,39 +11,37 @@
  */
 'use strict';
 
-const log = config.logger('runtime');
+const log = config.logger('runtime'),
+      clstr = require('utils/cli.js').clstr;
 
 /**
   Runtime utility
-
   @class runtime
  */
-
-module.exports.getClassName = getClassName;
 
 /**
   Adds a function to the base Object prototype that returns the actual name
   of the receiving class.
 
   @example
-  `console.log(runtime.getClassName(obj));`
+  `console.log(rt.className(obj));`
 
-  @method getClassName
+  @method className
   @param {Object} obj Object to get the name from
   @return {String} Name of the object formatted as [Object Name]
  */
-function getClassName(obj) {
+const className = module.exports.className = function(obj) {
    var results = /function (.{1,})\(/.exec(obj.constructor.toString());
    var hasResults = results && results.length > 1;
    return '[object ' + (hasResults ? results[1] : 'unknown') + ']';
-}
+};
 
 /**
   Get the stack as an array of call sites.
 
-  @method getStack
+  @method stack
  */
-module.exports.getStack = function() {
+module.exports.stack = function() {
   var limit = Error.stackTraceLimit;
   var obj = {};
   var prep = Error.prepareStackTrace;
@@ -66,18 +64,17 @@ module.exports.getStack = function() {
 /**
   Prints all keys (properties) and values of a given Object
 
-  @method getStack
+  @method logP
  */
 module.exports.logP = function(obj, tag, logF) {
   logF = typeof logf === 'undefined' ? log.debug.bind(log) : logF;
   tag = typeof tag !== 'undefined' ? ' ' + tag + ' ' : ' ';
 
-  var logmsg = getClassName(obj) + tag + '\x1B[37m{\n';
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      logmsg += '\t\x1B[37m' + key + ': \x1b[90m\'' + obj[key] + '\'\x1B[39m\n';
-    }
-  }
+  var logmsg = className(obj) + tag + clstr('{\n', 'white');
+  for (let key in obj)
+    if (obj.hasOwnProperty(key))
+      logmsg += clstr('\t' + key + ': ', 'white') + clstr('\'' + obj[key] + '\'\n', 'grey');
+  logmsg += clstr('}', 'white');
 
-  logF(logmsg + '}', 1);
+  logF(logmsg, 1);
 };

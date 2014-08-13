@@ -27,7 +27,7 @@ module.exports.name = function() {
 };
 
 module.exports.get = function(req, res) {
-  runtime.logP(req.headers, 'req.headers');
+  rt.logP(req.headers, 'req.headers');
 
   switch (req.accepts('json')) {
     case 'json': {

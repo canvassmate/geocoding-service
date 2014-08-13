@@ -19,5 +19,5 @@
   // env
   "node": true,
   // globals
-  "predef": [ "config", "runtime" ] // CoffeeScript's config namespace
+  "predef": [ "config", "rt" ] // CoffeeScript's config namespace
 }

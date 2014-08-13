@@ -20,7 +20,7 @@ function ApiError(status, msg) {
   Error.captureStackTrace(this); //, arguments.callee);
 
   this.message = msg;
-  this.name = runtime.getClassName(this);
+  this.name = rt.className(this);
   this.code = status;
 
   log.error(this, 1);
@@ -35,7 +35,7 @@ ApiError.prototype.send = function(res, method) {
   }
 
   res.status(this.code);
-  method({ error: this.message});
+  method({ error: this.message });
 
   return this;
 };
